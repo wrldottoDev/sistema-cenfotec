@@ -1,0 +1,28 @@
+/* 
+
+Tipografias
+
+*/
+
+
+.title {
+    color: var(--primary);
+    font-size: 42px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 22px;
+}
+
+.links {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.links:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+}

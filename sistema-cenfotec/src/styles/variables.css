@@ -1,0 +1,30 @@
+/* 
+
+Variables de colores para reutilizar en todo el código
+
+*/
+
+
+:root {
+
+    --primary: #164A98;
+    --primary-light: #006AEA;
+    --primary-soft: #9CC8FF;
+
+    --primary-gray: #d2d2d2;
+    --primary-gray2: #7c7b75;
+
+    --secondary: #fff200;
+    --secondary2: #ffc63e;
+
+    --secondary-is: #2b93d1;
+    --secondary-it: #4aa147;
+    --secondary-soft: #C81F66;
+    --secondary-cyber: #f05323;
+    --secondary-cf: #d2232a;
+    --secondary-al: #712c86;
+    --secondary-ins: #00734a;
+    --secondary-sta: #00928d;
+
+    
+}

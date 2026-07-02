@@ -1,0 +1,23 @@
+@import "./variables.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
+@import "./typography.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./utilities.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background-color: #f3f6fb;
+    height: 100vh;
+    background-color: white;
+}
