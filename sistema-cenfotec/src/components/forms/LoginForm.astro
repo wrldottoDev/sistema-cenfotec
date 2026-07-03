@@ -1,5 +1,4 @@
 ---
-import "../../styles/global.css"
 import { Lock, LogIn, User } from "@lucide/astro"
 ---
 
@@ -19,7 +18,7 @@ Componente del formulario de login
             <h1 class="title">Iniciar sesión</h1>
         </div>
 
-        <form method="post" class="login-form">
+        <form action="/dashboard" method="get" class="login-form">
             <label class="form-field">
                 <span>Usuario</span>
                 <div class="input-control">

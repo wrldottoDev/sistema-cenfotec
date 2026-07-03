@@ -18,6 +18,5 @@
 body {
     font-family: "Inter", Arial, sans-serif;
     background-color: #f3f6fb;
-    height: 100vh;
-    background-color: white;
+    min-height: 100vh;
 }
