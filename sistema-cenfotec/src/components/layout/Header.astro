@@ -1,5 +1,5 @@
 ---
-import { Bell, Search, UserRound } from "@lucide/astro";
+import { Bell, Moon, Search, Sun, UserRound } from "@lucide/astro";
 
 interface Props {
     title?: string;
@@ -26,6 +26,15 @@ const { title = "Egresados", subtitle = "Gestión de egresados" } = Astro.props;
             <Bell size={20} />
         </button>
 
+        <button class="theme-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
+            <span class="theme-toggle-track" aria-hidden="true">
+                <span class="theme-toggle-thumb">
+                    <Sun class="theme-icon theme-icon-sun" size={16} />
+                    <Moon class="theme-icon theme-icon-moon" size={16} />
+                </span>
+            </span>
+        </button>
+
         <button class="header-profile" type="button" aria-label="Abrir perfil">
             <span class="profile-avatar">
                 <UserRound size={18} />
@@ -37,3 +46,23 @@ const { title = "Egresados", subtitle = "Gestión de egresados" } = Astro.props;
         </button>
     </div>
 </header>
+
+<script>
+    const themeToggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    const root = document.documentElement;
+
+    const updateThemeToggle = () => {
+        const isDark = root.dataset.theme === "dark";
+        themeToggle?.setAttribute("aria-pressed", String(isDark));
+        themeToggle?.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
+    };
+
+    updateThemeToggle();
+
+    themeToggle?.addEventListener("click", () => {
+        const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = nextTheme;
+        localStorage.setItem("theme", nextTheme);
+        updateThemeToggle();
+    });
+</script>

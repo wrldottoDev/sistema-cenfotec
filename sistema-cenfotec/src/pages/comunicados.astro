@@ -1,0 +1,30 @@
+---
+import Main from "../layouts/Main.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
+---
+
+<Main title="Comunicados">
+    <Header title="Comunicados" subtitle="Gestión de comunicados institucionales" />
+
+    <ModuleList
+        title="Comunicados institucionales"
+        description="Publica avisos, noticias y mensajes dirigidos a comunidades de egresados."
+        createHref="/comunicados/crear"
+        createLabel="Crear comunicado"
+        searchPlaceholder="Buscar comunicado o audiencia"
+        stats={[
+            { label: "Publicados", value: "18", detail: "Este mes" },
+            { label: "Programados", value: "3", detail: "Pendientes de envío" },
+            { label: "Borradores", value: "7", detail: "En edición" },
+            { label: "Alcance", value: "4,820", detail: "Destinatarios" },
+        ]}
+        filters={["Audiencia", "Canal", "Estado"]}
+        columns={["Comunicado", "Canal", "Audiencia", "Fecha"]}
+        rows={[
+            { cells: ["Actualización de plataforma", "Correo", "Todos los egresados", "2026-07-04"], status: "Publicado", action: { label: "Ver", href: "/comunicados/detalle" } },
+            { cells: ["Convocatoria a mentorías", "Correo", "Mentores", "2026-07-10"], status: "Pendiente", action: { label: "Ver", href: "/comunicados/detalle" } },
+            { cells: ["Boletín mensual", "Portal", "Comunidad general", "2026-07-15"], status: "Borrador", action: { label: "Ver", href: "/comunicados/detalle" } },
+        ]}
+    />
+</Main>

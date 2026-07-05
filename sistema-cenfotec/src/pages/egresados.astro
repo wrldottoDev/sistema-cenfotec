@@ -1,8 +1,46 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
+import Header from "../components/layout/Header.astro";
+import EgresadosTable from "../components/egresados/EgresadosTable.astro";
+import EgresadosToolbar from "../components/egresados/EgresadosToolbar.astro";
+import type { Graduate } from "../components/egresados/EgresadosTable.astro";
+
+const graduates: Graduate[] = [
+    {
+        id: "2401",
+        name: "Sofía Martínez",
+        email: "sofia.mtz@email.com",
+        phone: "+56 9 1234 5678",
+        career: "Ingeniería Civil",
+        school: "Escuela de Ingeniería",
+        program: "Pregrado",
+    },
+    {
+        id: "1985",
+        name: "Alejandro Ruiz",
+        email: "a.ruiz@email.com",
+        phone: "+54 11 9876 5432",
+        career: "Ciencia de Datos",
+        school: "Escuela de Tecnologías",
+        program: "Maestría",
+    },
+    {
+        id: "3102",
+        name: "Elena Gómez",
+        email: "elena.gomez@email.com",
+        phone: "+57 300 555 1234",
+        career: "Diseño Digital",
+        school: "Escuela de Artes y Diseño",
+        program: "Diplomado",
+    },
+];
 ---
 
 <Main title="Egresados">
     <Header title="Egresados" subtitle="Gestión de Egresados" />
+
+    <section class="egresados-container" aria-label="Gestión de egresados">
+        <EgresadosToolbar />
+        <EgresadosTable graduates={graduates} />
+    </section>
 </Main>

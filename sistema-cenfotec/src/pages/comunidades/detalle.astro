@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de comunidad">
+    <Header title="Detalle de comunidad" subtitle="Participación y moderación" />
+    <ProfileView backHref="/comunidades" title="Alumni Software" subtitle="Comunidad de tecnología" status="Activo" facts={[
+        { label: "Miembros", value: "312" },
+        { label: "Moderador", value: "Sofía Martínez" },
+        { label: "Publicaciones", value: "24" },
+    ]} sections={[
+        { title: "Actividad reciente", items: [
+            { label: "Última publicación", value: "2026-07-02" },
+            { label: "Temas", value: "Arquitectura, desarrollo web, empleabilidad" },
+        ] },
+    ]} />
+</Main>

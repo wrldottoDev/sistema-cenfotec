@@ -1,0 +1,38 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Perfil egresado">
+    <Header title="Perfil egresado" subtitle="Consulta y actualización de expediente" />
+    <ProfileView
+        backHref="/egresados"
+        title="Sofía Martínez"
+        subtitle="Bachillerato en Ingeniería del Software"
+        status="Activo"
+        email="sofia.mtz@email.com"
+        phone="+506 8888 1201"
+        facts={[
+            { label: "ID", value: "2401" },
+            { label: "Escuela", value: "Tecnologías de Información" },
+            { label: "Graduación", value: "2024" },
+            { label: "Último contacto", value: "2026-06-28" },
+        ]}
+        sections={[
+            { title: "Trayectoria académica", items: [
+                { label: "Carrera", value: "Ingeniería del Software" },
+                { label: "Programa", value: "Bachillerato" },
+                { label: "Título registrado", value: "Bachillerato en Ingeniería del Software" },
+            ] },
+            { title: "Seguimiento profesional", items: [
+                { label: "Empresa", value: "Grupo Synapse" },
+                { label: "Puesto", value: "Frontend Developer" },
+                { label: "Área profesional", value: "Desarrollo web y experiencia de usuario" },
+                { label: "LinkedIn", value: "https://linkedin.com/in/sofia-martinez" },
+                { label: "Portafolio", value: "https://sofia.dev" },
+                { label: "Intereses", value: "Mentorías, oportunidades laborales y comunidades técnicas." },
+            ] },
+        ]}
+    />
+</Main>

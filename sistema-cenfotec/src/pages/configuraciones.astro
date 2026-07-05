@@ -1,8 +1,35 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleForm from "../components/admin/ModuleForm.astro";
 ---
 
 <Main title="Configuraciones">
-    <Header title="Configuraciones" subtitle="" />
+    <Header title="Configuraciones" subtitle="Preferencias generales del sistema" />
+
+    <ModuleForm
+        backHref="/dashboard"
+        title="Configuración administrativa"
+        description="Ajusta parámetros visuales, notificaciones y reglas operativas del panel."
+        submitLabel="Guardar configuración"
+        sections={[
+            {
+                title: "Sistema",
+                fields: [
+                    { label: "Nombre del sistema", placeholder: "Sistema CENFOTEC" },
+                    { label: "Correo de soporte", type: "email", placeholder: "soporte@ucenfotec.ac.cr" },
+                    { label: "Zona horaria", type: "select", options: ["America/Costa_Rica", "UTC"] },
+                    { label: "Idioma", type: "select", options: ["Español", "Inglés"] },
+                ],
+            },
+            {
+                title: "Notificaciones",
+                fields: [
+                    { label: "Remitente de comunicados", placeholder: "CENFOTEC Alumni" },
+                    { label: "Frecuencia de reportes", type: "select", options: ["Diaria", "Semanal", "Mensual"] },
+                    { label: "Mensaje de bienvenida", type: "textarea", placeholder: "Texto para nuevos egresados" },
+                ],
+            },
+        ]}
+    />
 </Main>

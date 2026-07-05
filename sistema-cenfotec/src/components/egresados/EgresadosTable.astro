@@ -1,0 +1,118 @@
+---
+import { Eye, Pencil, RefreshCw, Search, Settings2, Trash2 } from "@lucide/astro";
+
+export interface Graduate {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    career: string;
+    school: string;
+    program: string;
+}
+
+interface Props {
+    graduates: Graduate[];
+}
+
+const { graduates } = Astro.props;
+---
+
+<section class="table-card" aria-labelledby="egresados-table-title">
+    <header class="table-header">
+        <div>
+            <h2 id="egresados-table-title">Listado de egresados</h2>
+            <p>Consulta, administra y actualiza los perfiles registrados.</p>
+        </div>
+
+        <label class="egresados-search">
+            <Search size={18} />
+            <span class="sr-only">Buscar egresado</span>
+            <input type="search" placeholder="Buscar egresado">
+        </label>
+    </header>
+
+    <div class="botones-tabla" aria-label="Opciones de visualización y acciones de tabla">
+        <fieldset class="view-options">
+            <legend class="sr-only">Modo de visualización</legend>
+
+            <label for="lineal">
+                <input type="checkbox" id="lineal" name="view" value="lineal">
+                Lineal
+            </label>
+
+            <label for="grid">
+                <input type="checkbox" id="grid" name="view" value="grid">
+                Grid
+            </label>
+        </fieldset>
+
+        <div class="table-actions">
+            <button class="secondary-action-button" type="button">
+                <Settings2 size={18} />
+                Herramientas
+            </button>
+
+            <button class="danger-action-button" type="button">
+                <Trash2 size={18} />
+                Eliminar
+            </button>
+
+            <button class="icon-action-button" type="button" aria-label="Actualizar tabla">
+                <RefreshCw size={18} />
+            </button>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="egresados-table">
+            <caption class="sr-only">Listado de egresados registrados</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Perfil</th>
+                    <th scope="col">Contacto</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Escuela</th>
+                    <th scope="col">Programa</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    graduates.map((graduate) => (
+                        <tr>
+                            <th scope="row">
+                                <strong>{graduate.name}</strong>
+                                <small>ID: {graduate.id}</small>
+                            </th>
+                            <td>
+                                <span>{graduate.email}</span>
+                                <small>{graduate.phone}</small>
+                            </td>
+                            <td>{graduate.career}</td>
+                            <td>{graduate.school}</td>
+                            <td>
+                                <span class="program-badge">{graduate.program}</span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <a href="/egresados/perfil" aria-label={`Ver perfil de ${graduate.name}`}>
+                                        <Eye size={16} />
+                                    </a>
+                                    <button type="button" aria-label={`Editar perfil de ${graduate.name}`}>
+                                        <Pencil size={16} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <nav class="custom-pagination" aria-label="Paginación de egresados">
+        <a href="/egresados" class="page-link prev-next" rel="prev">&laquo; Anterior</a>
+        <a href="/egresados" class="page-link prev-next" rel="next">Siguiente &raquo;</a>
+    </nav>
+</section>

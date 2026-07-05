@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear mentoría">
+    <Header title="Crear mentoría" subtitle="Asignación de sesiones" />
+    <ModuleForm backHref="/mentorias" title="Nueva mentoría" description="Asocia mentor, egresado, tema y calendario de sesiones." submitLabel="Guardar mentoría" sections={[
+        { title: "Datos de mentoría", fields: [
+            { label: "Tema", placeholder: "Preparación para entrevistas" },
+            { label: "Mentor", placeholder: "Alejandro Ruiz" },
+            { label: "Egresado", placeholder: "María Solís" },
+            { label: "Próxima sesión", type: "date" },
+            { label: "Estado", type: "select", options: ["Activo", "Pendiente", "Cerrado"] },
+            { label: "Objetivos", type: "textarea", placeholder: "Resultados esperados de la mentoría" },
+        ] },
+    ]} />
+</Main>

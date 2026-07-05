@@ -1,0 +1,144 @@
+---
+import { Download, Filter, Pencil, Plus, Search, Trash2 } from "@lucide/astro";
+
+export interface Stat {
+    label: string;
+    value: string;
+    detail?: string;
+}
+
+export interface RowAction {
+    label: string;
+    href: string;
+}
+
+export interface Row {
+    cells: string[];
+    status?: "Activo" | "Inactivo" | "Pendiente" | "Publicado" | "Borrador" | "Cerrado";
+    action?: RowAction;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    createHref: string;
+    createLabel: string;
+    searchPlaceholder: string;
+    stats: Stat[];
+    filters: string[];
+    columns: string[];
+    rows: Row[];
+}
+
+const {
+    title,
+    description,
+    createHref,
+    createLabel,
+    searchPlaceholder,
+    stats,
+    filters,
+    columns,
+    rows,
+} = Astro.props;
+---
+
+<section class="admin-shell" aria-labelledby="module-title">
+    <div class="admin-actions-bar">
+        <div>
+            <h2 id="module-title">{title}</h2>
+            <p>{description}</p>
+        </div>
+
+        <a class="admin-primary-action" href={createHref}>
+            <Plus size={18} />
+            {createLabel}
+        </a>
+    </div>
+
+    <div class="admin-stats-grid" aria-label="Resumen">
+        {stats.map((stat) => (
+            <article class="admin-stat-card">
+                <span>{stat.label}</span>
+                <strong>{stat.value}</strong>
+                {stat.detail && <small>{stat.detail}</small>}
+            </article>
+        ))}
+    </div>
+
+    <form class="admin-filter-card" aria-label="Filtros">
+        <label class="admin-search-field">
+            <Search size={18} />
+            <input type="search" placeholder={searchPlaceholder} />
+        </label>
+
+        {filters.map((filter) => (
+            <label class="admin-filter-field">
+                <span>{filter}</span>
+                <input type="text" />
+            </label>
+        ))}
+
+        <button class="admin-secondary-action" type="button">
+            <Filter size={16} />
+            Filtrar
+        </button>
+    </form>
+
+    <section class="admin-table-card" aria-label={title}>
+        <header class="admin-table-header">
+            <div>
+                <h3>{title}</h3>
+                <p>{rows.length} registros visibles</p>
+            </div>
+
+            <button class="admin-ghost-action" type="button">
+                <Download size={16} />
+                Exportar
+            </button>
+        </header>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        {columns.map((column) => <th scope="col">{column}</th>)}
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows.map((row) => (
+                        <tr>
+                            {row.cells.map((cell, index) => (
+                                index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>
+                            ))}
+                            <td>
+                                {row.status && (
+                                    <span class:list={["admin-status", `is-${row.status.toLowerCase()}`]}>
+                                        {row.status}
+                                    </span>
+                                )}
+                            </td>
+                            <td>
+                                <div class="admin-row-actions">
+                                    {row.action ? (
+                                        <a class="admin-row-link" href={row.action.href}>{row.action.label}</a>
+                                    ) : (
+                                        <button class="admin-row-link" type="button">Ver</button>
+                                    )}
+                                    <button class="admin-icon-link" type="button" aria-label="Editar registro">
+                                        <Pencil size={15} />
+                                    </button>
+                                    <button class="admin-icon-link is-danger" type="button" aria-label="Eliminar registro">
+                                        <Trash2 size={15} />
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>

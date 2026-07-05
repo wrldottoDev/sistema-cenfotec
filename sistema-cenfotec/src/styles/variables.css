@@ -26,5 +26,48 @@ Variables de colores para reutilizar en todo el código
     --secondary-ins: #00734a;
     --secondary-sta: #00928d;
 
-    
+    --bg: #f3f6fb;
+    --surface: #ffffff;
+    --surface-2: #f6f9fe;
+    --surface-3: #eef5ff;
+    --text: #182033;
+    --text-muted: #657189;
+    --text-soft: #8d96a8;
+    --border: #dce7f6;
+    --border-soft: rgba(22, 74, 152, 0.1);
+    --shadow: 0 16px 36px rgba(22, 74, 152, 0.08);
+    --shadow-strong: 0 18px 42px rgba(22, 74, 152, 0.09);
+    --sidebar-bg: linear-gradient(180deg, var(--primary) 0%, #0f3470 100%);
+    --input-bg: #fbfdff;
+    --table-head-bg: #f6f9fe;
+    --neutral-control: #e2e7ef;
+
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --primary: #74a9ff;
+    --primary-light: #4f93ff;
+    --primary-soft: #173964;
+
+    --primary-gray: #3a4658;
+    --primary-gray2: #aab6c8;
+
+    --bg: #0d1320;
+    --surface: #141d2c;
+    --surface-2: #192436;
+    --surface-3: #20304a;
+    --text: #edf4ff;
+    --text-muted: #aab6c8;
+    --text-soft: #7f8da3;
+    --border: #2b3a50;
+    --border-soft: rgba(156, 200, 255, 0.14);
+    --shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    --shadow-strong: 0 22px 54px rgba(0, 0, 0, 0.36);
+    --sidebar-bg: linear-gradient(180deg, #162944 0%, #0f1b2e 100%);
+    --input-bg: #101827;
+    --table-head-bg: #192436;
+    --neutral-control: #243248;
+
+    color-scheme: dark;
 }

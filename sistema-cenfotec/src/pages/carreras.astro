@@ -1,8 +1,31 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
 ---
 
 <Main title="Carreras">
     <Header title="Carreras" subtitle="Gestión de Carreras" />
+
+    <ModuleList
+        title="Listado de carreras"
+        description="Administra la oferta académica, escuelas asociadas y estado de publicación."
+        createHref="/carreras/crear"
+        createLabel="Crear carrera"
+        searchPlaceholder="Buscar carrera, código o escuela"
+        stats={[
+            { label: "Carreras", value: "38", detail: "31 activas" },
+            { label: "Escuelas", value: "7", detail: "Oferta vigente" },
+            { label: "En revisión", value: "4", detail: "Pendientes académicos" },
+            { label: "Egresados asociados", value: "1,248", detail: "Registros históricos" },
+        ]}
+        filters={["Escuela", "Nivel", "Estado"]}
+        columns={["Carrera", "Código", "Escuela", "Nivel"]}
+        rows={[
+            { cells: ["Ingeniería del Software", "ISW-01", "Tecnologías de Información", "Bachillerato"], status: "Activo", action: { label: "Ver", href: "/carreras/detalle" } },
+            { cells: ["Ciberseguridad", "CYB-02", "Tecnologías de Información", "Licenciatura"], status: "Activo", action: { label: "Ver", href: "/carreras/detalle" } },
+            { cells: ["Diseño UX/UI", "DUX-03", "Diseño y Animación Digital", "Técnico"], status: "Activo", action: { label: "Ver", href: "/carreras/detalle" } },
+            { cells: ["Analítica de Datos", "ADA-04", "Posgrados", "Maestría"], status: "Pendiente", action: { label: "Ver", href: "/carreras/detalle" } },
+        ]}
+    />
 </Main>

@@ -1,0 +1,30 @@
+---
+import Main from "../layouts/Main.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
+---
+
+<Main title="Mentorías">
+    <Header title="Mentorías" subtitle="Gestión de mentorías" />
+
+    <ModuleList
+        title="Programa de mentorías"
+        description="Da seguimiento a sesiones, mentores, solicitudes y resultados."
+        createHref="/mentorias/crear"
+        createLabel="Crear mentoría"
+        searchPlaceholder="Buscar mentor, egresado o tema"
+        stats={[
+            { label: "Activas", value: "24", detail: "Sesiones abiertas" },
+            { label: "Solicitudes", value: "8", detail: "Pendientes" },
+            { label: "Mentores", value: "32", detail: "Disponibles" },
+            { label: "Finalizadas", value: "61", detail: "Histórico anual" },
+        ]}
+        filters={["Tema", "Mentor", "Estado"]}
+        columns={["Mentoría", "Mentor", "Egresado", "Próxima sesión"]}
+        rows={[
+            { cells: ["Preparación para entrevistas", "Alejandro Ruiz", "María Solís", "2026-07-09"], status: "Activo", action: { label: "Ver", href: "/mentorias/detalle" } },
+            { cells: ["Arquitectura cloud", "Sofía Martínez", "Carlos Brenes", "2026-07-12"], status: "Activo", action: { label: "Ver", href: "/mentorias/detalle" } },
+            { cells: ["Portafolio UX", "Elena Gómez", "Andrea Campos", "2026-07-18"], status: "Pendiente", action: { label: "Ver", href: "/mentorias/detalle" } },
+        ]}
+    />
+</Main>

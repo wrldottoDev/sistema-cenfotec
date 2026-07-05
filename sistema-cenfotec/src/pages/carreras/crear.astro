@@ -1,0 +1,34 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear carrera">
+    <Header title="Crear carrera" subtitle="Registro de oferta académica" />
+    <ModuleForm
+        backHref="/carreras"
+        title="Nueva carrera"
+        description="Completa los datos académicos, escuela responsable y estado de publicación."
+        submitLabel="Guardar carrera"
+        sections={[
+            {
+                title: "Información general",
+                fields: [
+                    { label: "Nombre de la carrera", placeholder: "Ingeniería del Software" },
+                    { label: "Código", placeholder: "ISW-01" },
+                    { label: "Escuela", type: "select", options: ["Tecnologías de Información", "Diseño y Animación Digital", "Posgrados"] },
+                    { label: "Nivel académico", type: "select", options: ["Técnico", "Bachillerato", "Licenciatura", "Maestría"] },
+                    { label: "Descripción", type: "textarea", placeholder: "Resumen de la carrera" },
+                ],
+            },
+            {
+                title: "Publicación",
+                fields: [
+                    { label: "Estado", type: "select", options: ["Activo", "Pendiente", "Inactivo"] },
+                    { label: "Coordinador", placeholder: "Nombre de la persona responsable" },
+                ],
+            },
+        ]}
+    />
+</Main>

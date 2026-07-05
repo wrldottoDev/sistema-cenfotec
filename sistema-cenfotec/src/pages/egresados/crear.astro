@@ -1,0 +1,45 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Registrar egresado">
+    <Header title="Registrar egresado" subtitle="Creación de perfil académico" />
+    <ModuleForm
+        backHref="/egresados"
+        title="Nuevo egresado"
+        description="Registra la información personal, contacto y datos académicos del egresado."
+        submitLabel="Guardar egresado"
+        sections={[
+            {
+                title: "Datos personales",
+                fields: [
+                    { label: "Nombre completo", placeholder: "Sofía Martínez", required: true },
+                    { label: "Identificación", placeholder: "1-1234-0567", required: true },
+                    { label: "Correo", type: "email", placeholder: "correo@ejemplo.com", required: true },
+                    { label: "Teléfono", type: "tel", placeholder: "+506 8888 8888", required: true },
+                    { label: "Fecha de registro", type: "date", required: true },
+                ],
+            },
+            {
+                title: "Datos académicos",
+                fields: [
+                    { label: "Carrera", type: "select", options: ["Ingeniería del Software", "Ciberseguridad", "Diseño UX/UI", "Analítica de Datos"], required: true },
+                    { label: "Escuela", type: "select", options: ["Tecnologías de Información", "Diseño y Animación Digital", "Posgrados"], required: true },
+                    { label: "Programa", type: "select", options: ["Técnico", "Bachillerato", "Licenciatura", "Maestría"], required: true },
+                    { label: "Año de graduación", type: "number", placeholder: "2026", min: "1990", required: true },
+                    { label: "Lugares de trabajo", type: "textarea", placeholder: "Empresas o instituciones donde labora o ha laborado" },
+                    { label: "Notas internas", type: "textarea", placeholder: "Información relevante para seguimiento" },
+                ],
+            },
+            {
+                title: "Importación masiva CSV",
+                fields: [
+                    { label: "Archivo CSV", type: "file", accept: ".csv" },
+                    { label: "Validaciones esperadas", type: "textarea", placeholder: "Formato correcto, campos obligatorios y registros duplicados." },
+                ],
+            },
+        ]}
+    />
+</Main>

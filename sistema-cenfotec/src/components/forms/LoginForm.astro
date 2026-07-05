@@ -1,5 +1,5 @@
 ---
-import { Lock, LogIn, User } from "@lucide/astro"
+import { Lock, LogIn, ShieldCheck, User } from "@lucide/astro"
 ---
 
 
@@ -20,10 +20,23 @@ Componente del formulario de login
 
         <form action="/dashboard" method="get" class="login-form">
             <label class="form-field">
+                <span>Rol</span>
+                <div class="input-control">
+                    <ShieldCheck size={20} />
+                    <select name="rol" required>
+                        <option value="">Seleccione un rol</option>
+                        <option value="registro">Registro</option>
+                        <option value="bienestar">Bienestar Estudiantil</option>
+                        <option value="egresado">Egresado</option>
+                    </select>
+                </div>
+            </label>
+
+            <label class="form-field">
                 <span>Usuario</span>
                 <div class="input-control">
                     <User size={20} />
-                    <input type="text" name="usuario" placeholder="Ingrese su usuario">
+                    <input type="text" name="usuario" placeholder="Ingrese su usuario" required>
                 </div>
             </label>
 
@@ -31,7 +44,7 @@ Componente del formulario de login
                 <span>Contraseña</span>
                 <div class="input-control">
                     <Lock size={20} />
-                    <input type="password" name="password" placeholder="Ingrese su contraseña">
+                    <input type="password" name="password" placeholder="Ingrese su contraseña" required minlength="6">
                 </div>
             </label>
 
@@ -41,7 +54,7 @@ Componente del formulario de login
                     <span>Recordarme</span>
                 </label>
 
-                <a href="#" class="links">¿Problemas para entrar?</a>
+                <a href="/soporte-login" class="links">¿Problemas para entrar?</a>
             </div>
 
             <button class="primary-button" type="submit">
@@ -51,7 +64,7 @@ Componente del formulario de login
         </form>
 
         <p class="login-footer">
-            <a href="#" class="links">Cambiar contraseña</a>
+            <a href="/cambiar-contrasena" class="links">Cambiar contraseña</a>
         </p>
     </div>
 </section>

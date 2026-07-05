@@ -1,15 +1,292 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
-import { BriefcaseBusiness, CalendarDays, GraduationCap, School, TrendingUp, UsersRound } from "@lucide/astro";
+import Header from "../components/layout/Header.astro";
+import {
+    BellRing,
+    BriefcaseBusiness,
+    CalendarDays,
+    GraduationCap,
+    Handshake,
+    Megaphone,
+    MessagesSquare,
+    Presentation,
+    ShieldCheck,
+    TrendingUp,
+    UsersRound,
+} from "@lucide/astro";
+
+const today = new Date();
+const currentHour = today.getHours();
+const greeting =
+    currentHour < 12
+        ? "Buenos días"
+        : currentHour < 18
+          ? "Buenas tardes"
+          : "Buenas noches";
+
+const todayLabel = today.toLocaleDateString("es-CR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+});
+const todayIso = today.toISOString().split("T")[0];
+
+const quickActions = [
+    {
+        href: "/actividades",
+        label: "Actividades",
+        icon: CalendarDays,
+    },
+    {
+        href: "/comunidades",
+        label: "Comunidades",
+        icon: MessagesSquare,
+    },
+    {
+        href: "/mentorias",
+        label: "Mentorías",
+        icon: Handshake,
+    },
+    {
+        href: "/oportunidades",
+        label: "Oportunidades",
+        icon: BriefcaseBusiness,
+    },
+    {
+        href: "/comunicados",
+        label: "Comunicados",
+        icon: Megaphone,
+    },
+];
+
+const stats = [
+    {
+        label: "Total egresados",
+        value: "1,248",
+        detail: "+12% este mes",
+        icon: UsersRound,
+    },
+    {
+        label: "Títulos registrados",
+        value: "932",
+        detail: "48 pendientes",
+        icon: GraduationCap,
+    },
+    {
+        label: "Mentorías activas",
+        value: "24",
+        detail: "8 nuevas solicitudes",
+        icon: Presentation,
+    },
+    {
+        label: "Oportunidades laborales",
+        value: "64",
+        detail: "16 publicadas esta semana",
+        icon: BriefcaseBusiness,
+    },
+    {
+        label: "Comunicados publicados",
+        value: "18",
+        detail: "3 programados",
+        icon: BellRing,
+    },
+];
+
+const upcomingActivities = [
+    {
+        date: "08 Jul",
+        title: "Feria de empleo",
+        description: "Escuela de Tecnologías de Información",
+    },
+    {
+        date: "15 Jul",
+        title: "Actualización de títulos",
+        description: "Revisión de expedientes pendientes",
+    },
+    {
+        date: "22 Jul",
+        title: "Encuentro de egresados",
+        description: "Seguimiento de comunidad CENFOTEC",
+    },
+];
+
+const careerChart = [
+    { label: "TI", value: "72%" },
+    { label: "IS", value: "64%" },
+    { label: "CY", value: "58%" },
+    { label: "DG", value: "49%" },
+    { label: "AD", value: "41%" },
+];
+
+const roles = [
+    {
+        name: "Registro",
+        description: "Administra egresados, importaciones CSV, títulos, carreras y escuelas.",
+        icon: GraduationCap,
+    },
+    {
+        name: "Bienestar Estudiantil",
+        description: "Gestiona actividades, comunidades, mentorías, comunicados y oportunidades.",
+        icon: ShieldCheck,
+    },
+    {
+        name: "Egresado",
+        description: "Actualiza su perfil, consulta títulos, participa y solicita mentorías.",
+        icon: UsersRound,
+    },
+];
 ---
+
+
+
 
 <Main title="Dashboard">
     <Header title="Inicio" subtitle="Resumen general del sistema" />
 
-    <header>
-        
-    </header>
+    <section class="dashboard-container" aria-labelledby="dashboard-greeting">
+        <div class="dashboard-welcome">
+            <div>
+                <h2 id="dashboard-greeting">{greeting}</h2>
+            </div>
 
+            <time datetime={todayIso}>{todayLabel}</time>
+        </div>
 
+        <section class="dashboard-section" aria-labelledby="quick-actions-title">
+            <div class="section-heading">
+                <div>
+                    <h3 id="quick-actions-title">Otras páginas</h3>
+                    <p>Accesos rápidos fuera del menú principal</p>
+                </div>
+            </div>
+
+            <div class="quick-actions-grid">
+                {
+                    quickActions.map((action) => {
+                        const Icon = action.icon;
+
+                        return (
+                            <a class="quick-action-card" href={action.href}>
+                                <span class="quick-action-icon">
+                                    <Icon size={22} />
+                                </span>
+                                <span class="quick-action-content">
+                                    <strong>{action.label}</strong>
+                                </span>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+        </section>
+
+        <section class="dashboard-section" aria-labelledby="stats-title">
+            <div class="section-heading">
+                <div>
+                    <h3 id="stats-title">Estadísticas</h3>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                {
+                    stats.map((stat) => {
+                        const Icon = stat.icon;
+
+                        return (
+                            <article class="stat-card">
+                                <span class="stat-icon">
+                                    <Icon size={22} />
+                                </span>
+                                <div>
+                                    <p>{stat.label}</p>
+                                    <strong>{stat.value}</strong>
+                                    <small>{stat.detail}</small>
+                                </div>
+                            </article>
+                        );
+                    })
+                }
+            </div>
+        </section>
+
+        <section class="dashboard-section" aria-labelledby="roles-title">
+            <div class="section-heading">
+                <div>
+                    <h3 id="roles-title">Roles del sistema</h3>
+                    <p>Responsabilidades principales representadas en la interfaz</p>
+                </div>
+            </div>
+
+            <div class="roles-grid">
+                {
+                    roles.map((role) => {
+                        const Icon = role.icon;
+
+                        return (
+                            <article class="role-card">
+                                <span class="stat-icon">
+                                    <Icon size={22} />
+                                </span>
+                                <div>
+                                    <strong>{role.name}</strong>
+                                    <p>{role.description}</p>
+                                </div>
+                            </article>
+                        );
+                    })
+                }
+            </div>
+        </section>
+
+        <div class="dashboard-content-grid">
+            <section class="dashboard-panel" aria-labelledby="upcoming-title">
+                <div class="panel-heading">
+                    <div>
+                        <h3 id="upcoming-title">Actividades próximas</h3>
+                        <p>Eventos y acciones pendientes</p>
+                    </div>
+                    <CalendarDays size={20} />
+                </div>
+
+                <div class="activity-list">
+                    {
+                        upcomingActivities.map((activity) => (
+                            <article class="activity-item">
+                                <time>{activity.date}</time>
+                                <div>
+                                    <strong>{activity.title}</strong>
+                                    <span>{activity.description}</span>
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section class="dashboard-panel" aria-labelledby="career-chart-title">
+                <div class="panel-heading">
+                    <div>
+                        <h3 id="career-chart-title">Egresados por carrera</h3>
+                        <p>Distribución relativa de registros</p>
+                    </div>
+                    <TrendingUp size={20} />
+                </div>
+
+                <div class="career-chart" aria-label="Gráfico de egresados por carrera">
+                    {
+                        careerChart.map((item) => (
+                            <div class="career-chart-row">
+                                <span>{item.label}</span>
+                                <div class="career-chart-track">
+                                    <span style={`width: ${item.value}`}></span>
+                                </div>
+                                <strong>{item.value}</strong>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+    </section>
 </Main>

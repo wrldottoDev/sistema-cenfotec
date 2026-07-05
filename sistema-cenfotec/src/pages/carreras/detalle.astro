@@ -1,0 +1,32 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de carrera">
+    <Header title="Detalle de carrera" subtitle="Información académica y operación" />
+    <ProfileView
+        backHref="/carreras"
+        title="Ingeniería del Software"
+        subtitle="Escuela de Tecnologías de Información"
+        status="Activo"
+        facts={[
+            { label: "Código", value: "ISW-01" },
+            { label: "Nivel", value: "Bachillerato" },
+            { label: "Egresados", value: "342" },
+            { label: "Títulos asociados", value: "4" },
+        ]}
+        sections={[
+            { title: "Datos académicos", items: [
+                { label: "Coordinación", value: "María González" },
+                { label: "Duración", value: "8 cuatrimestres" },
+                { label: "Modalidad", value: "Híbrida" },
+            ] },
+            { title: "Seguimiento", items: [
+                { label: "Última actualización", value: "2026-07-01" },
+                { label: "Observaciones", value: "Plan vigente con revisión curricular anual." },
+            ] },
+        ]}
+    />
+</Main>

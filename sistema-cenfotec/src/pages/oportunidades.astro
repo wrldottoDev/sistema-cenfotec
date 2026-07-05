@@ -1,0 +1,31 @@
+---
+import Main from "../layouts/Main.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
+---
+
+<Main title="Oportunidades laborales">
+    <Header title="Oportunidades laborales" subtitle="Gestión de ofertas y oportunidades" />
+
+    <ModuleList
+        title="Oportunidades laborales"
+        description="Publica ofertas, pasantías, alianzas y oportunidades profesionales."
+        createHref="/oportunidades/crear"
+        createLabel="Crear oportunidad"
+        searchPlaceholder="Buscar puesto, empresa o área"
+        stats={[
+            { label: "Publicadas", value: "64", detail: "16 esta semana" },
+            { label: "Empresas", value: "28", detail: "Aliadas activas" },
+            { label: "Aplicaciones", value: "219", detail: "En seguimiento" },
+            { label: "Cerradas", value: "41", detail: "Este año" },
+        ]}
+        filters={["Empresa", "Modalidad", "Estado"]}
+        columns={["Oportunidad", "Empresa", "Modalidad", "Cierre"]}
+        rows={[
+            { cells: ["Frontend Developer", "Grupo Synapse", "Híbrida", "2026-07-20"], status: "Publicado", action: { label: "Ver", href: "/oportunidades/detalle" } },
+            { cells: ["Analista SOC", "SecureCR", "Remota", "2026-07-25"], status: "Publicado", action: { label: "Ver", href: "/oportunidades/detalle" } },
+            { cells: ["Diseñador UX Junior", "Studio Ágil", "Presencial", "2026-08-01"], status: "Pendiente", action: { label: "Ver", href: "/oportunidades/detalle" } },
+            { cells: ["Data Engineer", "DataWorks", "Remota", "2026-08-10"], status: "Borrador", action: { label: "Ver", href: "/oportunidades/detalle" } },
+        ]}
+    />
+</Main>

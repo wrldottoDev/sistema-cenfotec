@@ -1,0 +1,27 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de título">
+    <Header title="Detalle de título" subtitle="Información de título académico" />
+    <ProfileView
+        backHref="/titulos"
+        title="Bachillerato en Ingeniería del Software"
+        subtitle="Carrera: Ingeniería del Software"
+        status="Activo"
+        facts={[
+            { label: "Nivel", value: "Bachillerato" },
+            { label: "Escuela", value: "Tecnologías de Información" },
+            { label: "Egresados", value: "342" },
+        ]}
+        sections={[
+            { title: "Datos administrativos", items: [
+                { label: "Código interno", value: "TIT-ISW-BAC" },
+                { label: "Estado", value: "Activo" },
+                { label: "Última revisión", value: "2026-06-20" },
+            ] },
+        ]}
+    />
+</Main>

@@ -1,0 +1,45 @@
+---
+import { Filter, Plus } from "@lucide/astro";
+
+interface Props {
+    dateValue?: string;
+    minDate?: string;
+    maxDate?: string;
+}
+
+const { dateValue = "2026-07-03", minDate = "2026-01-01", maxDate = "2026-12-31" } = Astro.props;
+---
+
+<form class="top-header" aria-label="Controles de búsqueda de egresados">
+    <nav class="links-egresados" aria-label="Búsquedas de egresados">
+        <a href="/egresados">Nueva búsqueda</a>
+        <span aria-hidden="true">|</span>
+        <a href="/egresados/perfil">Perfil destacado</a>
+    </nav>
+
+    <div class="top-header-actions">
+        <div class="fecha-container">
+            <label for="fecha-egresados">Fecha</label>
+            <input
+                type="date"
+                id="fecha-egresados"
+                name="fecha"
+                value={dateValue}
+                min={minDate}
+                max={maxDate}
+            >
+        </div>
+
+        <div class="botones-header">
+            <a class="primary-button boton-egresados" href="/egresados/crear">
+                <Plus size={18} />
+                Registrar
+            </a>
+
+            <button class="primary-button boton-egresados" type="button">
+                <Filter size={18} />
+                Filtros
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de oportunidad">
+    <Header title="Detalle de oportunidad" subtitle="Oferta laboral publicada" />
+    <ProfileView backHref="/oportunidades" title="Frontend Developer" subtitle="Grupo Synapse" status="Publicado" facts={[
+        { label: "Modalidad", value: "Híbrida" },
+        { label: "Cierre", value: "2026-07-20" },
+        { label: "Aplicaciones", value: "34" },
+    ]} sections={[
+        { title: "Requisitos", items: [
+            { label: "Experiencia", value: "1 a 3 años en desarrollo web" },
+            { label: "Tecnologías", value: "JavaScript, HTML, CSS, frameworks modernos" },
+        ] },
+    ]} />
+</Main>

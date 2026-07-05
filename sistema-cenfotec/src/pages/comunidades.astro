@@ -1,0 +1,31 @@
+---
+import Main from "../layouts/Main.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
+---
+
+<Main title="Comunidades">
+    <Header title="Comunidades" subtitle="Gestión de comunidades" />
+
+    <ModuleList
+        title="Comunidades de egresados"
+        description="Administra grupos por carrera, interés profesional y participación."
+        createHref="/comunidades/crear"
+        createLabel="Crear comunidad"
+        searchPlaceholder="Buscar comunidad o moderador"
+        stats={[
+            { label: "Comunidades", value: "14", detail: "12 activas" },
+            { label: "Miembros", value: "986", detail: "Participantes" },
+            { label: "Moderadores", value: "21", detail: "Asignados" },
+            { label: "Publicaciones", value: "73", detail: "Último mes" },
+        ]}
+        filters={["Área", "Moderador", "Estado"]}
+        columns={["Comunidad", "Área", "Moderador", "Miembros"]}
+        rows={[
+            { cells: ["Alumni Software", "Tecnología", "Sofía Martínez", "312"], status: "Activo", action: { label: "Ver", href: "/comunidades/detalle" } },
+            { cells: ["CENFOTEC Cyber", "Seguridad", "Alejandro Ruiz", "184"], status: "Activo", action: { label: "Ver", href: "/comunidades/detalle" } },
+            { cells: ["Diseño Digital CR", "Diseño", "Elena Gómez", "146"], status: "Activo", action: { label: "Ver", href: "/comunidades/detalle" } },
+            { cells: ["Data Alumni", "Datos", "Daniel Rojas", "96"], status: "Pendiente", action: { label: "Ver", href: "/comunidades/detalle" } },
+        ]}
+    />
+</Main>

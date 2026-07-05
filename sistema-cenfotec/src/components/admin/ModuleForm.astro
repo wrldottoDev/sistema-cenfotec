@@ -1,0 +1,82 @@
+---
+import { ArrowLeft, Save } from "@lucide/astro";
+
+export interface Field {
+    label: string;
+    type?: "text" | "email" | "tel" | "date" | "url" | "number" | "file" | "textarea" | "select";
+    placeholder?: string;
+    options?: string[];
+    required?: boolean;
+    accept?: string;
+    min?: string;
+    pattern?: string;
+}
+
+interface Props {
+    backHref: string;
+    title: string;
+    description: string;
+    submitLabel?: string;
+    sections: {
+        title: string;
+        fields: Field[];
+    }[];
+}
+
+const { backHref, title, description, submitLabel = "Guardar", sections } = Astro.props;
+---
+
+<section class="admin-shell" aria-labelledby="form-title">
+    <div class="admin-actions-bar">
+        <div>
+            <h2 id="form-title">{title}</h2>
+            <p>{description}</p>
+        </div>
+
+        <a class="admin-ghost-action" href={backHref}>
+            <ArrowLeft size={18} />
+            Volver
+        </a>
+    </div>
+
+    <form class="admin-form-card">
+        {sections.map((section) => (
+            <fieldset class="admin-form-section">
+                <legend>{section.title}</legend>
+
+                <div class="admin-form-grid">
+                    {section.fields.map((field) => (
+                        <label class:list={["admin-form-field", { "is-wide": field.type === "textarea" }]}>
+                            <span>{field.label}</span>
+                            {field.type === "textarea" ? (
+                                <textarea placeholder={field.placeholder} required={field.required}></textarea>
+                            ) : field.type === "select" ? (
+                                <select required={field.required}>
+                                    <option value="">Seleccionar</option>
+                                    {field.options?.map((option) => <option value={option}>{option}</option>)}
+                                </select>
+                            ) : (
+                                <input
+                                    type={field.type ?? "text"}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    accept={field.accept}
+                                    min={field.min}
+                                    pattern={field.pattern}
+                                />
+                            )}
+                        </label>
+                    ))}
+                </div>
+            </fieldset>
+        ))}
+
+        <div class="admin-form-footer">
+            <a class="admin-ghost-action" href={backHref}>Cancelar</a>
+            <button class="admin-primary-action" type="submit">
+                <Save size={18} />
+                {submitLabel}
+            </button>
+        </div>
+    </form>
+</section>

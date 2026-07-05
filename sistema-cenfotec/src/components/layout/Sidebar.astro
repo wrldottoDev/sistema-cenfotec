@@ -6,6 +6,7 @@ import {
     GraduationCap,
     LayoutDashboard,
     LogOut,
+    Menu,
     School,
     Settings,
 } from "@lucide/astro";
@@ -26,9 +27,13 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
         <button class="toggle" type="button" aria-label="Alternar menú lateral" aria-expanded="false">
             <ChevronLeft size={22} />
         </button>
+
+        <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú principal" aria-expanded="false" aria-controls="main-menu">
+            <Menu size={24} />
+        </button>
     </header>
 
-    <div class="menu-bar">
+    <div class="menu-bar" id="main-menu">
         <div class="menu">
             <ul class="menu-links">
                 <li class:list={["nav-link", { "is-active": isActive("/dashboard") }]}>
@@ -87,10 +92,17 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
 <script>
     const sidebar = document.querySelector("#sidebar");
     const toggle = sidebar?.querySelector(".toggle");
+    const mobileToggle = sidebar?.querySelector<HTMLButtonElement>(".mobile-menu-toggle");
 
     toggle?.addEventListener("click", () => {
         const isCollapsed = sidebar?.classList.toggle("is-collapsed");
         document.body.classList.toggle("sidebar-open", !isCollapsed);
         toggle.setAttribute("aria-expanded", String(!isCollapsed));
+    });
+
+    mobileToggle?.addEventListener("click", () => {
+        const isOpen = sidebar?.classList.toggle("is-mobile-open");
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileToggle.setAttribute("aria-label", isOpen ? "Cerrar menú principal" : "Abrir menú principal");
     });
 </script>

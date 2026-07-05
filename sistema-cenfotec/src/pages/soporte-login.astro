@@ -1,0 +1,38 @@
+---
+import AuthLayout from "../layouts/AuthLayout.astro";
+import { LifeBuoy, Mail } from "@lucide/astro";
+---
+
+<AuthLayout title="Soporte de acceso">
+    <section class="login-card">
+        <figure class="login-brand">
+            <img src="/logos/logoletrasNoBG.png" alt="Logo de Universidad CENFOTEC">
+        </figure>
+
+        <div class="white-card">
+            <div class="login-heading">
+                <p>Soporte</p>
+                <h1 class="title">Problemas para entrar</h1>
+            </div>
+
+            <form action="/login" method="get" class="login-form">
+                <label class="form-field">
+                    <span>Correo institucional</span>
+                    <div class="input-control">
+                        <Mail size={20} />
+                        <input type="email" name="correo" placeholder="correo@ucenfotec.ac.cr">
+                    </div>
+                </label>
+
+                <button class="primary-button" type="submit">
+                    <LifeBuoy size={20} />
+                    <span>Solicitar ayuda</span>
+                </button>
+            </form>
+
+            <p class="login-footer">
+                <a href="/login" class="links">Volver al inicio de sesión</a>
+            </p>
+        </div>
+    </section>
+</AuthLayout>

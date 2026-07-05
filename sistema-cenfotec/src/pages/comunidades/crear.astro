@@ -1,0 +1,18 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear comunidad">
+    <Header title="Crear comunidad" subtitle="Configuración de grupos de egresados" />
+    <ModuleForm backHref="/comunidades" title="Nueva comunidad" description="Crea grupos por área de interés, moderación y reglas de participación." submitLabel="Guardar comunidad" sections={[
+        { title: "Datos de comunidad", fields: [
+            { label: "Nombre", placeholder: "Alumni Software" },
+            { label: "Área", placeholder: "Tecnología" },
+            { label: "Moderador", placeholder: "Sofía Martínez" },
+            { label: "Estado", type: "select", options: ["Activo", "Pendiente", "Inactivo"] },
+            { label: "Descripción", type: "textarea", placeholder: "Propósito y dinámica de la comunidad" },
+        ] },
+    ]} />
+</Main>

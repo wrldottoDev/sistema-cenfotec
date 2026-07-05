@@ -1,0 +1,46 @@
+---
+import AuthLayout from "../layouts/AuthLayout.astro";
+import { KeyRound, Lock } from "@lucide/astro";
+---
+
+<AuthLayout title="Cambiar contraseña">
+    <section class="login-card">
+        <figure class="login-brand">
+            <img src="/logos/logoletrasNoBG.png" alt="Logo de Universidad CENFOTEC">
+        </figure>
+
+        <div class="white-card">
+            <div class="login-heading">
+                <p>Seguridad</p>
+                <h1 class="title">Cambiar contraseña</h1>
+            </div>
+
+            <form action="/login" method="get" class="login-form">
+                <label class="form-field">
+                    <span>Contraseña actual</span>
+                    <div class="input-control">
+                        <Lock size={20} />
+                        <input type="password" name="actual" placeholder="Contraseña actual">
+                    </div>
+                </label>
+
+                <label class="form-field">
+                    <span>Nueva contraseña</span>
+                    <div class="input-control">
+                        <KeyRound size={20} />
+                        <input type="password" name="nueva" placeholder="Nueva contraseña">
+                    </div>
+                </label>
+
+                <button class="primary-button" type="submit">
+                    <KeyRound size={20} />
+                    <span>Actualizar contraseña</span>
+                </button>
+            </form>
+
+            <p class="login-footer">
+                <a href="/login" class="links">Volver al inicio de sesión</a>
+            </p>
+        </div>
+    </section>
+</AuthLayout>

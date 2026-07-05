@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear oportunidad">
+    <Header title="Crear oportunidad" subtitle="Publicación laboral" />
+    <ModuleForm backHref="/oportunidades" title="Nueva oportunidad" description="Registra la oferta, empresa, modalidad y fecha de cierre." submitLabel="Guardar oportunidad" sections={[
+        { title: "Datos de oportunidad", fields: [
+            { label: "Puesto", placeholder: "Frontend Developer" },
+            { label: "Empresa", placeholder: "Grupo Synapse" },
+            { label: "Modalidad", type: "select", options: ["Presencial", "Híbrida", "Remota"] },
+            { label: "Fecha de cierre", type: "date" },
+            { label: "URL de aplicación", type: "url", placeholder: "https://empresa.com/apply" },
+            { label: "Descripción", type: "textarea", placeholder: "Responsabilidades y requisitos" },
+        ] },
+    ]} />
+</Main>

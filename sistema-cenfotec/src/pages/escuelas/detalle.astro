@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de escuela">
+    <Header title="Detalle de escuela" subtitle="Carreras y coordinación académica" />
+    <ProfileView backHref="/escuelas" title="Tecnologías de Información" subtitle="Escuela académica" status="Activo" email="eti@ucenfotec.ac.cr" facts={[
+        { label: "Código", value: "ETI" },
+        { label: "Carreras", value: "16" },
+        { label: "Coordinación", value: "María González" },
+    ]} sections={[
+        { title: "Oferta académica", items: [
+            { label: "Carreras activas", value: "Ingeniería del Software, Ciberseguridad, Analítica de Datos" },
+            { label: "Títulos registrados", value: "22" },
+        ] },
+    ]} />
+</Main>

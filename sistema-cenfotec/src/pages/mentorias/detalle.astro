@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de mentoría">
+    <Header title="Detalle de mentoría" subtitle="Seguimiento de sesiones" />
+    <ProfileView backHref="/mentorias" title="Preparación para entrevistas" subtitle="Mentor: Alejandro Ruiz" status="Activo" facts={[
+        { label: "Egresado", value: "María Solís" },
+        { label: "Próxima sesión", value: "2026-07-09" },
+        { label: "Sesiones", value: "3 de 6" },
+    ]} sections={[
+        { title: "Plan", items: [
+            { label: "Objetivo", value: "Mejorar entrevista técnica y perfil profesional." },
+            { label: "Notas", value: "Pendiente revisión de CV actualizado." },
+        ] },
+    ]} />
+</Main>

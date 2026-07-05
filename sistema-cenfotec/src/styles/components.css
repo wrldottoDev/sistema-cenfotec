@@ -3,3 +3,196 @@
 @import "./components/header.css";
 @import "./components/sidebar.css";
 @import "./components/dashboard.css";
+@import "./components/admin.css";
+@import "./components/egresados.css";
+@import "./components/landing.css";
+
+:root[data-theme="dark"] .page-header,
+:root[data-theme="dark"] .top-header,
+:root[data-theme="dark"] .table-card,
+:root[data-theme="dark"] .quick-action-card,
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .dashboard-panel,
+:root[data-theme="dark"] .dashboard-welcome,
+:root[data-theme="dark"] .admin-actions-bar,
+:root[data-theme="dark"] .admin-filter-card,
+:root[data-theme="dark"] .admin-table-card,
+:root[data-theme="dark"] .admin-form-card,
+:root[data-theme="dark"] .admin-profile-hero,
+:root[data-theme="dark"] .admin-profile-side,
+:root[data-theme="dark"] .admin-detail-card,
+:root[data-theme="dark"] .admin-stat-card,
+:root[data-theme="dark"] .metric-card,
+:root[data-theme="dark"] .titles-table-card,
+:root[data-theme="dark"] .side-card,
+:root[data-theme="dark"] .white-card {
+    background: var(--surface);
+    border-color: var(--border-soft);
+    box-shadow: var(--shadow);
+}
+
+:root[data-theme="dark"] .dashboard-welcome {
+    background:
+        linear-gradient(135deg, rgba(79, 147, 255, 0.13), rgba(255, 198, 62, 0.06)),
+        var(--surface);
+}
+
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .page-heading h1,
+:root[data-theme="dark"] .page-heading p,
+:root[data-theme="dark"] .dashboard-welcome h2,
+:root[data-theme="dark"] .section-heading h3,
+:root[data-theme="dark"] .panel-heading h3,
+:root[data-theme="dark"] .quick-action-card strong,
+:root[data-theme="dark"] .role-card strong,
+:root[data-theme="dark"] .stat-card strong,
+:root[data-theme="dark"] .activity-item strong,
+:root[data-theme="dark"] .admin-actions-bar h2,
+:root[data-theme="dark"] .admin-profile-main h2,
+:root[data-theme="dark"] .admin-table-header h3,
+:root[data-theme="dark"] .admin-form-section legend,
+:root[data-theme="dark"] .admin-detail-card h3,
+:root[data-theme="dark"] .admin-detail-card dd,
+:root[data-theme="dark"] .admin-profile-side strong,
+:root[data-theme="dark"] .table-header h2,
+:root[data-theme="dark"] .metric-card span,
+:root[data-theme="dark"] .table-title-row h2,
+:root[data-theme="dark"] .side-card h2,
+:root[data-theme="dark"] .chart-block strong,
+:root[data-theme="dark"] .login-heading p,
+:root[data-theme="dark"] .form-field {
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .section-heading p,
+:root[data-theme="dark"] .panel-heading p,
+:root[data-theme="dark"] .dashboard-welcome time,
+:root[data-theme="dark"] .stat-card p,
+:root[data-theme="dark"] .role-card p,
+:root[data-theme="dark"] .activity-item span,
+:root[data-theme="dark"] .career-chart-row > span,
+:root[data-theme="dark"] .career-chart-row strong,
+:root[data-theme="dark"] .admin-actions-bar p,
+:root[data-theme="dark"] .admin-profile-main p,
+:root[data-theme="dark"] .admin-table-header p,
+:root[data-theme="dark"] .admin-detail-card dt,
+:root[data-theme="dark"] .admin-profile-side span,
+:root[data-theme="dark"] .table-header p,
+:root[data-theme="dark"] .chart-block span,
+:root[data-theme="dark"] .login-footer,
+:root[data-theme="dark"] .remember-option,
+:root[data-theme="dark"] .egresados-table td small,
+:root[data-theme="dark"] .egresados-table tbody th small {
+    color: var(--text-muted);
+}
+
+:root[data-theme="dark"] .header-search,
+:root[data-theme="dark"] .egresados-search,
+:root[data-theme="dark"] .admin-search-field,
+:root[data-theme="dark"] .title-search,
+:root[data-theme="dark"] .input-control,
+:root[data-theme="dark"] .activity-item,
+:root[data-theme="dark"] .view-options label,
+:root[data-theme="dark"] .secondary-action-button,
+:root[data-theme="dark"] .icon-action-button,
+:root[data-theme="dark"] .admin-secondary-action,
+:root[data-theme="dark"] .admin-ghost-action,
+:root[data-theme="dark"] .admin-row-link,
+:root[data-theme="dark"] .row-action,
+:root[data-theme="dark"] .table-title-row button {
+    background: var(--surface-2);
+    border-color: var(--border);
+    color: var(--primary);
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] .header-search input,
+:root[data-theme="dark"] .egresados-search input,
+:root[data-theme="dark"] .admin-search-field input,
+:root[data-theme="dark"] .admin-filter-field input,
+:root[data-theme="dark"] .admin-form-field input,
+:root[data-theme="dark"] .admin-form-field select,
+:root[data-theme="dark"] .admin-form-field textarea,
+:root[data-theme="dark"] .title-search input,
+:root[data-theme="dark"] .filters-row input,
+:root[data-theme="dark"] .input-control input {
+    background: transparent;
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .input-control select {
+    background: transparent;
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .admin-filter-field input,
+:root[data-theme="dark"] .admin-form-field input,
+:root[data-theme="dark"] .admin-form-field select,
+:root[data-theme="dark"] .admin-form-field textarea,
+:root[data-theme="dark"] .filters-row input {
+    background: var(--input-bg);
+    border-color: var(--border);
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+    color: var(--text-soft);
+}
+
+:root[data-theme="dark"] .admin-table-wrap,
+:root[data-theme="dark"] .table-wrapper,
+:root[data-theme="dark"] .titles-table-wrapper {
+    border-color: var(--border);
+}
+
+:root[data-theme="dark"] .admin-table,
+:root[data-theme="dark"] .egresados-table,
+:root[data-theme="dark"] .titles-table {
+    background: var(--surface);
+}
+
+:root[data-theme="dark"] .admin-table thead th,
+:root[data-theme="dark"] .egresados-table thead th,
+:root[data-theme="dark"] .titles-table thead th {
+    color: var(--primary);
+    background: var(--table-head-bg);
+}
+
+:root[data-theme="dark"] .admin-table tbody th,
+:root[data-theme="dark"] .admin-table td,
+:root[data-theme="dark"] .egresados-table tbody th,
+:root[data-theme="dark"] .egresados-table td,
+:root[data-theme="dark"] .titles-table tbody th,
+:root[data-theme="dark"] .titles-table td {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+:root[data-theme="dark"] .admin-table tbody tr:hover,
+:root[data-theme="dark"] .egresados-table tbody tr:hover {
+    background: rgba(79, 147, 255, 0.06);
+}
+
+:root[data-theme="dark"] .back-button,
+:root[data-theme="dark"] .filters-row button,
+:root[data-theme="dark"] .quick-actions button {
+    color: var(--text);
+    background: var(--neutral-control);
+}
+
+:root[data-theme="dark"] .career-chart-track {
+    background: #263854;
+}
+
+:root[data-theme="dark"] .donut-chart::after {
+    background: var(--surface);
+}
+
+:root[data-theme="dark"] .login-card {
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}

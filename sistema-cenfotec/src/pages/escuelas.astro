@@ -1,8 +1,31 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
 ---
 
 <Main title="Escuelas">
     <Header title="Escuelas" subtitle="Gestión de Escuelas" />
+
+    <ModuleList
+        title="Listado de escuelas"
+        description="Control de escuelas, coordinaciones, carreras asignadas y estado operativo."
+        createHref="/escuelas/crear"
+        createLabel="Crear escuela"
+        searchPlaceholder="Buscar escuela o coordinación"
+        stats={[
+            { label: "Escuelas", value: "7", detail: "6 activas" },
+            { label: "Carreras asociadas", value: "38", detail: "Oferta total" },
+            { label: "Coordinadores", value: "9", detail: "Responsables activos" },
+            { label: "Actualizaciones", value: "3", detail: "Esta semana" },
+        ]}
+        filters={["Coordinación", "Área", "Estado"]}
+        columns={["Escuela", "Código", "Coordinación", "Carreras"]}
+        rows={[
+            { cells: ["Tecnologías de Información", "ETI", "María González", "16"], status: "Activo", action: { label: "Ver", href: "/escuelas/detalle" } },
+            { cells: ["Diseño y Animación Digital", "DAD", "Andrés Mora", "7"], status: "Activo", action: { label: "Ver", href: "/escuelas/detalle" } },
+            { cells: ["Administración de Proyectos", "EAP", "Laura Vargas", "5"], status: "Activo", action: { label: "Ver", href: "/escuelas/detalle" } },
+            { cells: ["Posgrados", "POS", "Daniel Rojas", "10"], status: "Pendiente", action: { label: "Ver", href: "/escuelas/detalle" } },
+        ]}
+    />
 </Main>

@@ -22,3 +22,24 @@ Estilos de los Layouts
 body.sidebar-open .main-content {
     margin-left: 310px;
 }
+
+@media (max-width: 920px) {
+    .main-content {
+        margin-left: 0;
+        padding: 110px 18px 24px;
+    }
+
+    body.sidebar-open .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .auth-body {
+        padding: 18px;
+    }
+
+    .main-content {
+        padding: 104px 12px 18px;
+    }
+}

@@ -1,8 +1,789 @@
 ---
-import AuthLayout from "../layouts/AuthLayout.astro";
-import LoginForm from "../components/forms/LoginForm.astro"
+import { Bell, BookOpen, BriefcaseBusiness, CalendarDays, ChevronDown, Clock, Code2, Eye, Gem, GraduationCap, Handshake, HelpCircle, LockKeyhole, Mail, MapPin, Megaphone, Menu, MessageCircle, Phone, Search, Send, Target, Ticket, UsersRound, User } from "@lucide/astro";
+import "../styles/global.css";
 ---
 
-<AuthLayout title="Iniciar sesión">
-    <LoginForm />
-</AuthLayout>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programa de Egresados CENFOTEC</title>
+    <script is:inline>
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? "dark" : "light");
+    </script>
+</head>
+<body>
+    <main class="public-page">
+        <nav class="public-nav" aria-label="Navegación pública">
+            <a class="public-brand" href="/">
+                <img src="/logos/logo-letras-color.png" alt="Universidad CENFOTEC" />
+            </a>
+
+            <button class="public-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="public-menu">
+                <Menu size={24} />
+            </button>
+
+            <div class="public-nav-actions" id="public-menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#programa">Sobre el programa</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#comunidad">Comunidad</a>
+                <a href="#actividades">Actividades</a>
+                <a href="#contacto">Contáctanos</a>
+                <a class="login-button" href="/login">
+                    <User size={18} />
+                    Iniciar sesión
+                </a>
+            </div>
+        </nav>
+
+        <section class="public-hero" id="inicio">
+            <div>
+                <h1>Programa de egresados<br>Universidad Cenfotec</h1>
+                <p>
+                    Conectamos talento, creamos oportunidades y fortalecemos nuestra comunidad de egresados para 
+                    transformar el futuro juntos
+                </p>
+
+                <div class="public-hero-actions">
+                    <a class="public-primary" href="/login">Conoce más</a>
+                    <a class="public-secondary" href="#programa">Únete a la comunidad</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-program" id="programa">
+            <div class="about-program-hero">
+                <div class="about-program-copy">
+                    <h2>Sobre el programa</h2>
+                    <strong>Programa de Egresados Universidad CENFOTEC</strong>
+                    <p>
+                        El Programa de Egresados de la Universidad CENFOTEC existe para fortalecer el vínculo
+                        con nuestra comunidad graduada, promover su desarrollo profesional y generar oportunidades
+                        que impulsen su crecimiento continuo.
+                    </p>
+                </div>
+                <img src="https://ucenfotec.ac.cr/wp-content/uploads/2026/02/IMG_2934-scaled.jpg" alt="Egresados de Universidad CENFOTEC frente al campus" />
+            </div>
+
+            <div class="about-principles">
+                <article>
+                    <div class="about-icon"><Target size={42} /></div>
+                    <div>
+                        <h3>Misión</h3>
+                        <p>Conectar talento, crear oportunidades y fortalecer nuestra comunidad de egresados para transformar el futuro juntos.</p>
+                    </div>
+                </article>
+                <article>
+                    <div class="about-icon"><Eye size={42} /></div>
+                    <div>
+                        <h3>Visión</h3>
+                        <p>Ser una red de egresados activa, reconocida y comprometida con el desarrollo profesional y social.</p>
+                    </div>
+                </article>
+                <article>
+                    <div class="about-icon"><Gem size={42} /></div>
+                    <div>
+                        <h3>Valores</h3>
+                        <ul>
+                            <li>Excelencia</li>
+                            <li>Integridad</li>
+                            <li>Colaboración</li>
+                            <li>Innovación</li>
+                            <li>Compromiso</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="about-objectives">
+                <h3>Objetivos del programa</h3>
+                <div>
+                    <article>
+                        <UsersRound size={34} />
+                        <p>Mantener una comunicación constante con nuestros egresados y fortalecer el sentido de pertenencia.</p>
+                    </article>
+                    <article>
+                        <BriefcaseBusiness size={34} />
+                        <p>Promover oportunidades de desarrollo profesional, laboral y académico para nuestros egresados.</p>
+                    </article>
+                    <article>
+                        <Handshake size={34} />
+                        <p>Facilitar espacios de networking, mentoría y colaboración entre egresados, estudiantes y la institución.</p>
+                    </article>
+                    <article>
+                        <Megaphone size={34} />
+                        <p>Informar sobre actividades, beneficios, noticias y oportunidades relevantes para la comunidad.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="about-benefits">
+                <h3>¿Qué beneficios obtienes al ser parte?</h3>
+                <div>
+                    <article>
+                        <div class="about-icon"><UsersRound size={30} /></div>
+                        <h4>Red de contactos</h4>
+                        <p>Conéctate con otros egresados, empresas y la universidad.</p>
+                    </article>
+                    <article>
+                        <div class="about-icon"><BriefcaseBusiness size={30} /></div>
+                        <h4>Oportunidades laborales</h4>
+                        <p>Accede a ofertas de trabajo exclusivas para nuestra comunidad.</p>
+                    </article>
+                    <article>
+                        <div class="about-icon"><BookOpen size={30} /></div>
+                        <h4>Formación continua</h4>
+                        <p>Participa en actividades, charlas, talleres y cursos especiales.</p>
+                    </article>
+                    <article>
+                        <div class="about-icon"><Handshake size={30} /></div>
+                        <h4>Mentorías</h4>
+                        <p>Acompaña o recibe guía de otros profesionales en tu desarrollo.</p>
+                    </article>
+                    <article>
+                        <div class="about-icon"><Megaphone size={30} /></div>
+                        <h4>Mantente informado</h4>
+                        <p>Recibe comunicados y noticias relevantes de tu alma máter.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits-section" id="beneficios">
+            <div class="benefits-intro">
+                <div class="benefits-copy">
+                    <span class="benefits-kicker">Beneficios</span>
+                    <h2>Beneficios que impulsan tu crecimiento</h2>
+                    <p>
+                        Ser parte del Programa de Egresados de la Universidad CENFOTEC te brinda acceso a recursos,
+                        oportunidades y una comunidad que te acompaña a lo largo de tu vida profesional.
+                    </p>
+                </div>
+
+                <div class="benefits-feature-panel">
+                    <article>
+                        <div><UsersRound size={30} /></div>
+                        <h3>Comunidad activa</h3>
+                        <p>Conéctate con miles de egresados y construye relaciones que abren nuevas puertas.</p>
+                    </article>
+                    <article>
+                        <div><GraduationCap size={30} /></div>
+                        <h3>Crecimiento profesional</h3>
+                        <p>Accede a oportunidades, mentorías y formación continua para seguir evolucionando.</p>
+                    </article>
+                    <article>
+                        <div><BriefcaseBusiness size={30} /></div>
+                        <h3>Oportunidades exclusivas</h3>
+                        <p>Descubre ofertas laborales, convenios y beneficios diseñados especialmente para egresados.</p>
+                    </article>
+                    <article>
+                        <div><Megaphone size={30} /></div>
+                        <h3>Siempre informado</h3>
+                        <p>Recibe noticias, eventos y comunicados relevantes para mantenerte actualizado.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="benefits-showcase">
+                <div class="benefits-main">
+                    <h3>Beneficios destacados</h3>
+                    <div class="benefits-card-grid">
+                        <article>
+                            <div class="benefit-icon blue"><UsersRound size={28} /></div>
+                            <h4>Red de contactos</h4>
+                            <p>Amplía tu red profesional y personal conectando con egresados, empresas y aliados estratégicos.</p>
+                        </article>
+                        <article>
+                            <div class="benefit-icon green"><BriefcaseBusiness size={28} /></div>
+                            <h4>Oportunidades laborales</h4>
+                            <p>Accede a bolsas de empleo exclusivas y recibe ofertas laborales alineadas con tu perfil.</p>
+                        </article>
+                        <article>
+                            <div class="benefit-icon purple"><GraduationCap size={28} /></div>
+                            <h4>Formación continua</h4>
+                            <p>Participa en charlas, talleres, cursos y webinars para seguir aprendiendo durante toda tu vida.</p>
+                        </article>
+                        <article>
+                            <div class="benefit-icon orange"><Handshake size={28} /></div>
+                            <h4>Mentorías</h4>
+                            <p>Recibe acompañamiento de profesionales con experiencia o conviértete en mentor de otros.</p>
+                        </article>
+                        <article>
+                            <div class="benefit-icon pink"><Megaphone size={28} /></div>
+                            <h4>Información relevante</h4>
+                            <p>Mantente al día con noticias, eventos, beneficios y novedades de tu universidad.</p>
+                        </article>
+                    </div>
+
+                    <div class="benefits-impact">
+                        <h3>Nuestro impacto en números</h3>
+                        <div>
+                            <article>
+                                <UsersRound size={24} />
+                                <strong>5.248+</strong>
+                                <span>Egresados</span>
+                                <p>Forman parte de nuestra comunidad global.</p>
+                            </article>
+                            <article>
+                                <BriefcaseBusiness size={24} />
+                                <strong>350+</strong>
+                                <span>Empresas aliadas</span>
+                                <p>Conectadas con el talento de nuestros egresados.</p>
+                            </article>
+                            <article>
+                                <CalendarDays size={24} />
+                                <strong>120+</strong>
+                                <span>Actividades al año</span>
+                                <p>Entre charlas, talleres, webinars y encuentros.</p>
+                            </article>
+                            <article>
+                                <Megaphone size={24} />
+                                <strong>25+</strong>
+                                <span>Países</span>
+                                <p>Donde nuestros egresados están dejando huella.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="benefits-side">
+                    <div class="benefits-image-placeholder" aria-label="Espacio reservado para imagen"></div>
+                    <blockquote>“Formamos profesionales, construimos comunidad y generamos impacto en la sociedad.”</blockquote>
+
+                    <div class="benefits-testimonial">
+                        <h3>Lo que dicen nuestros egresados</h3>
+                        <div>
+                            <div class="benefits-avatar-placeholder" aria-label="Espacio reservado para foto de perfil"></div>
+                            <div>
+                                <p>“Gracias al programa de egresados he conocido grandes profesionales, he encontrado oportunidades increíbles y sigo aprendiendo cada día.”</p>
+                                <strong>Otoniel González</strong>
+                                <span>Ingeniero en Software</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-cta">
+                        <div><Megaphone size={28} /></div>
+                        <h3>¿Aún no formas parte?</h3>
+                        <p>Regístrate y comienza a disfrutar de todos los beneficios que tenemos para ti.</p>
+                        <a href="/login">Regístrate ahora</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="community-section" id="comunidad">
+            <div class="community-hero">
+                <div class="community-copy">
+                    <h2>Comunidad</h2>
+                    <p>
+                        Conéctate, comparte experiencias y forma parte de una red de egresados que impulsa el
+                        crecimiento profesional y personal de nuestra comunidad.
+                    </p>
+                </div>
+
+                <div class="community-banner">
+                    <div class="community-banner-icon">
+                        <UsersRound size={34} />
+                    </div>
+                    <div>
+                        <h3>Somos más fuertes juntos</h3>
+                        <p>
+                            Nuestra comunidad está formada por egresados de distintas generaciones, carreras y
+                            países que comparten un mismo propósito: seguir creciendo y aportar valor donde quiera
+                            que estén.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="community-layout">
+                <div class="community-main">
+                    <section class="community-panel">
+                        <div class="community-panel-header">
+                            <h3>Comunidades activas</h3>
+                            <a href="/comunidades">Ver todas las comunidades</a>
+                        </div>
+
+                        <div class="community-card-grid">
+                            <article class="community-card">
+                                <div class="community-card-media media-software"></div>
+                                <div class="community-card-icon blue"><Code2 size={24} /></div>
+                                <h4>Desarrolladores de Software</h4>
+                                <p>Espacio para compartir conocimientos, recursos, proyectos y oportunidades en el mundo del desarrollo.</p>
+                                <footer>
+                                    <span>1,245 miembros</span>
+                                    <span class="is-active">Activa</span>
+                                </footer>
+                            </article>
+                            <article class="community-card">
+                                <div class="community-card-media media-business"></div>
+                                <div class="community-card-icon purple"><GraduationCap size={24} /></div>
+                                <h4>Emprendedores CENFOTEC</h4>
+                                <p>Conecta con otros emprendedores, comparte ideas y encuentra aliados para tus proyectos.</p>
+                                <footer>
+                                    <span>892 miembros</span>
+                                    <span class="is-active">Activa</span>
+                                </footer>
+                            </article>
+                            <article class="community-card">
+                                <div class="community-card-media media-cyber"></div>
+                                <div class="community-card-icon green"><LockKeyhole size={24} /></div>
+                                <h4>Ciberseguridad</h4>
+                                <p>Red de egresados apasionados por la seguridad informática y las nuevas amenazas digitales.</p>
+                                <footer>
+                                    <span>678 miembros</span>
+                                    <span class="is-active">Activa</span>
+                                </footer>
+                            </article>
+                            <article class="community-card">
+                                <div class="community-card-media media-leaders"></div>
+                                <div class="community-card-icon orange"><UsersRound size={24} /></div>
+                                <h4>Líderes y Gestión</h4>
+                                <p>Espacio para líderes que buscan compartir experiencias, herramientas y mejores prácticas.</p>
+                                <footer>
+                                    <span>543 miembros</span>
+                                    <span class="is-active">Activa</span>
+                                </footer>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="community-panel">
+                        <div class="community-panel-header">
+                            <h3>Próximos encuentros y eventos</h3>
+                            <a href="/actividades">Ver calendario completo</a>
+                        </div>
+
+                        <div class="community-events">
+                            <article>
+                                <div class="community-event-icon blue"><CalendarDays size={28} /></div>
+                                <div>
+                                    <h4>Networking: Conecta y Colabora</h4>
+                                    <p>Encuentro virtual para fortalecer nuestra red profesional.</p>
+                                    <span><MapPin size={14} /> Virtual</span>
+                                </div>
+                                <time><strong>15</strong><span>JUL<br />2026</span></time>
+                                <a href="/actividades/detalle">Ver detalles</a>
+                            </article>
+                            <article>
+                                <div class="community-event-icon green"><GraduationCap size={28} /></div>
+                                <div>
+                                    <h4>Tendencias en Inteligencia Artificial</h4>
+                                    <p>Charla con expertos sobre el impacto de la IA en el futuro laboral.</p>
+                                    <span><MapPin size={14} /> Virtual</span>
+                                </div>
+                                <time><strong>22</strong><span>JUL<br />2026</span></time>
+                                <a href="/actividades/detalle">Ver detalles</a>
+                            </article>
+                            <article>
+                                <div class="community-event-icon purple"><UsersRound size={28} /></div>
+                                <div>
+                                    <h4>Mesa redonda: Emprender en Costa Rica</h4>
+                                    <p>Historias reales de egresados que transformaron ideas en negocios.</p>
+                                    <span><MapPin size={14} /> Presencial - CENFOTEC</span>
+                                </div>
+                                <time><strong>05</strong><span>AGO<br />2026</span></time>
+                                <a href="/actividades/detalle">Ver detalles</a>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="community-side">
+                    <section class="community-join">
+                        <h3>Participa en nuestra comunidad</h3>
+                        <article>
+                            <div><MessageCircle size={24} /></div>
+                            <p><strong>Comparte tu experiencia</strong>Publica, comenta y ayuda a otros egresados en su camino profesional.</p>
+                        </article>
+                        <article>
+                            <div><Handshake size={24} /></div>
+                            <p><strong>Colabora y crece</strong>Encuentra aliados para proyectos, negocios o desarrollo profesional.</p>
+                        </article>
+                        <article>
+                            <div><Bell size={24} /></div>
+                            <p><strong>Mantente informado</strong>Recibe invitaciones a eventos, noticias y oportunidades exclusivas.</p>
+                        </article>
+                        <a href="/login">Únete a la comunidad</a>
+                    </section>
+
+                    <section class="community-testimonial">
+                        <h3>Testimonio destacado</h3>
+                        <blockquote>
+                            “Gracias a esta comunidad encontré mentores, alianzas y oportunidades que impulsaron
+                            mi carrera más de lo que imaginé.”
+                        </blockquote>
+                        <div>
+                            <div class="community-avatar-placeholder"></div>
+                            <p><strong>Andrés Martínez</strong><span>Ingeniero en Software<br />Promoción 2018</span></p>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </section>
+
+        <section class="activities-section" id="actividades">
+            <div class="activities-hero">
+                <div class="activities-copy">
+                    <h2>Actividades</h2>
+                    <p>
+                        Participa en nuestras actividades diseñadas para fortalecer la conexión entre egresados,
+                        promover el aprendizaje continuo y generar nuevas oportunidades.
+                    </p>
+                </div>
+
+                <div class="activities-banner">
+                    <div><CalendarDays size={34} /></div>
+                    <div>
+                        <h3>Siempre hay algo para ti</h3>
+                        <p>
+                            Desde charlas y talleres hasta eventos de networking, encuentra actividades que impulsarán
+                            tu desarrollo profesional y personal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activities-metrics">
+                <article>
+                    <div class="metric-icon blue"><CalendarDays size={28} /></div>
+                    <p><span>Próximas actividades</span><strong>14</strong><small>En los próximos 30 días</small></p>
+                </article>
+                <article>
+                    <div class="metric-icon green"><UsersRound size={28} /></div>
+                    <p><span>Actividades este año</span><strong>56</strong><small>Organizadas en 2026</small></p>
+                </article>
+                <article>
+                    <div class="metric-icon purple"><User size={28} /></div>
+                    <p><span>Egresados participantes</span><strong>1,842</strong><small>En actividades este año</small></p>
+                </article>
+                <article>
+                    <div class="metric-icon orange"><Ticket size={28} /></div>
+                    <p><span>Tipos de actividades</span><strong>6</strong><small>Charlas, talleres, eventos y más</small></p>
+                </article>
+            </div>
+
+            <div class="activities-layout">
+                <section class="activities-list-panel">
+                    <div class="activities-panel-header">
+                        <h3>Próximas actividades</h3>
+                        <a href="/actividades">Ver calendario completo</a>
+                    </div>
+
+                    <div class="activities-list">
+                        <article>
+                            <div class="activity-thumb thumb-ai"></div>
+                            <div class="activity-info">
+                                <span class="activity-tag blue">Charla</span>
+                                <h4>Tendencias en Inteligencia Artificial</h4>
+                                <p>Conoce las últimas tendencias en IA y su impacto en el futuro laboral.</p>
+                                <div>
+                                    <span><CalendarDays size={14} /> 15 de julio, 2026</span>
+                                    <span><Clock size={14} /> 6:00 PM - 8:00 PM</span>
+                                    <span><MapPin size={14} /> Virtual</span>
+                                    <span><UsersRound size={14} /> Abierto a todos</span>
+                                </div>
+                            </div>
+                            <time><strong>15</strong><span>JUL<br />2026</span></time>
+                            <a href="/actividades/detalle">Ver detalles</a>
+                        </article>
+                        <article>
+                            <div class="activity-thumb thumb-networking"></div>
+                            <div class="activity-info">
+                                <span class="activity-tag green">Networking</span>
+                                <h4>Networking: Conecta y Colabora</h4>
+                                <p>Encuentro virtual para fortalecer nuestra red profesional.</p>
+                                <div>
+                                    <span><CalendarDays size={14} /> 22 de julio, 2026</span>
+                                    <span><Clock size={14} /> 7:00 PM - 9:00 PM</span>
+                                    <span><MapPin size={14} /> Virtual</span>
+                                    <span><UsersRound size={14} /> Abierto a todos</span>
+                                </div>
+                            </div>
+                            <time><strong>22</strong><span>JUL<br />2026</span></time>
+                            <a href="/actividades/detalle">Ver detalles</a>
+                        </article>
+                        <article>
+                            <div class="activity-thumb thumb-workshop"></div>
+                            <div class="activity-info">
+                                <span class="activity-tag purple">Taller</span>
+                                <h4>Taller de LinkedIn para Profesionales</h4>
+                                <p>Aprende a optimizar tu perfil y destacar en LinkedIn.</p>
+                                <div>
+                                    <span><CalendarDays size={14} /> 05 de agosto, 2026</span>
+                                    <span><Clock size={14} /> 6:00 PM - 8:00 PM</span>
+                                    <span><MapPin size={14} /> Presencial - CENFOTEC</span>
+                                    <span><UsersRound size={14} /> Cupos limitados</span>
+                                </div>
+                            </div>
+                            <time><strong>05</strong><span>AGO<br />2026</span></time>
+                            <a href="/actividades/detalle">Ver detalles</a>
+                        </article>
+                        <article>
+                            <div class="activity-thumb thumb-talk"></div>
+                            <div class="activity-info">
+                                <span class="activity-tag orange">Conversatorio</span>
+                                <h4>Conversatorio: Liderazgo que Inspira</h4>
+                                <p>Egresados líderes compartirán sus experiencias y aprendizajes.</p>
+                                <div>
+                                    <span><CalendarDays size={14} /> 19 de agosto, 2026</span>
+                                    <span><Clock size={14} /> 6:00 PM - 8:00 PM</span>
+                                    <span><MapPin size={14} /> Híbrido</span>
+                                    <span><UsersRound size={14} /> Abierto a todos</span>
+                                </div>
+                            </div>
+                            <time><strong>19</strong><span>AGO<br />2026</span></time>
+                            <a href="/actividades/detalle">Ver detalles</a>
+                        </article>
+                    </div>
+
+                    <button class="activities-load" type="button">Cargar más actividades <ChevronDown size={16} /></button>
+                </section>
+
+                <aside class="activities-sidebar">
+                    <section class="activity-widget">
+                        <h3>Buscar actividades</h3>
+                        <label class="activity-search">
+                            <Search size={18} />
+                            <input type="search" placeholder="Buscar por nombre, tema o palabra clave..." />
+                        </label>
+                    </section>
+
+                    <section class="activity-widget">
+                        <h3>Filtrar actividades</h3>
+                        <button type="button"><CalendarDays size={16} /> Tipo de actividad <ChevronDown size={16} /></button>
+                        <button type="button"><MapPin size={16} /> Modalidad <ChevronDown size={16} /></button>
+                        <button type="button"><UsersRound size={16} /> Público objetivo <ChevronDown size={16} /></button>
+                        <a href="/actividades">Aplicar filtros</a>
+                        <span>Limpiar filtros</span>
+                    </section>
+
+                    <section class="activity-widget activity-calendar">
+                        <div>
+                            <h3>Calendario</h3>
+                            <strong>Julio 2026</strong>
+                        </div>
+                        <div class="calendar-grid" aria-label="Calendario de julio 2026">
+                            <span>LUN</span><span>MAR</span><span>MIÉ</span><span>JUE</span><span>VIE</span><span>SÁB</span><span>DOM</span>
+                            <small>29</small><small>30</small><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b>
+                            <b>6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b>12</b>
+                            <b>13</b><b>14</b><b class="calendar-active">15</b><b>16</b><b>17</b><b>18</b><b>19</b>
+                            <b>20</b><b>21</b><b class="calendar-active">22</b><b>23</b><b>24</b><b>25</b><b>26</b>
+                            <b>27</b><b>28</b><b>29</b><b>30</b><b>31</b><small>1</small><small>2</small>
+                        </div>
+                        <a href="/actividades">Ver calendario completo</a>
+                    </section>
+                </aside>
+            </div>
+
+            <div class="activities-propose">
+                <div>
+                    <span><Send size={30} /></span>
+                    <div>
+                        <h3>¿Tienes una idea para una actividad?</h3>
+                        <p>Comparte tu propuesta y ayúdanos a crear experiencias que beneficien a toda nuestra comunidad de egresados.</p>
+                    </div>
+                </div>
+                <a href="/actividades/crear">Proponer actividad</a>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contacto">
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <span class="contact-kicker"><Send size={22} /> Contacto</span>
+                    <h2>Estamos aquí para <strong>ayudarte</strong></h2>
+                    <p>
+                        ¿Tienes dudas, sugerencias o necesitas más información sobre el Programa de Egresados?
+                        Nuestro equipo estará encantado de atenderte y brindarte el apoyo que necesitas.
+                    </p>
+
+                    <div class="contact-info-grid">
+                        <div class="contact-cards">
+                            <article>
+                                <div><MapPin size={24} /></div>
+                                <p><strong>Visítanos</strong>Universidad CENFOTEC<span>Barrio Francisco Peralta, de la Clínica Bíblica 100 metros al este, Paseo Colón, San José, Costa Rica.</span></p>
+                            </article>
+                            <article>
+                                <div><Mail size={24} /></div>
+                                <p><strong>Escríbenos</strong>egresados@ucenfotec.ac.cr<span>Te responderemos lo antes posible.</span></p>
+                            </article>
+                            <article>
+                                <div><Phone size={24} /></div>
+                                <p><strong>Llámanos</strong>+506 4000 3950<span>Lunes a Viernes, 7:00 a.m. - 6:00 p.m.</span></p>
+                            </article>
+                            <article>
+                                <div><Clock size={24} /></div>
+                                <p><strong>Horario de atención</strong>Lunes a Viernes<span>7:00 a.m. - 6:00 p.m.</span></p>
+                            </article>
+                        </div>
+
+                        <aside class="contact-prefer-card">
+                            <div><Mail size={58} /><Send size={34} /></div>
+                            <h3>¿Prefieres que te contactemos?</h3>
+                            <p>Déjanos tus datos y nuestro equipo se comunicará contigo.</p>
+                            <a href="#contact-form">Solicitar contacto</a>
+                        </aside>
+                    </div>
+                </div>
+
+                <form class="contact-form-card" id="contact-form">
+                    <div class="contact-form-heading">
+                        <div><MessageCircle size={30} /></div>
+                        <div>
+                            <h3>Envíanos un mensaje</h3>
+                            <p>Completa el formulario y te responderemos pronto.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-steps" aria-label="Progreso del formulario">
+                        <div class="is-current"><strong>1</strong><span>Tu información</span></div>
+                        <div><strong>2</strong><span>Detalles</span></div>
+                        <div><strong>3</strong><span>Mensaje</span></div>
+                    </div>
+
+                    <div class="contact-form-grid">
+                        <label>Nombre completo *
+                            <input type="text" placeholder="Ej. Juan Pérez" />
+                        </label>
+                        <label>Correo electrónico *
+                            <input type="email" placeholder="Ej. juan.perez@correo.com" />
+                        </label>
+                        <label>Número de teléfono
+                            <input type="tel" placeholder="Ej. 6000 0000" />
+                        </label>
+                        <label>Tipo de consulta *
+                            <select>
+                                <option>Selecciona una opción</option>
+                                <option>Actividades</option>
+                                <option>Mentorías</option>
+                                <option>Bolsa de empleo</option>
+                            </select>
+                        </label>
+                        <label class="contact-full">Asunto *
+                            <input type="text" placeholder="Ej. Información sobre actividades" />
+                        </label>
+                        <label class="contact-full">Mensaje *
+                            <textarea placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                            <span>0 / 1000</span>
+                        </label>
+                    </div>
+
+                    <button type="button"><Send size={22} /> Enviar mensaje</button>
+                    <p class="contact-safe"><LockKeyhole size={14} /> Tu información está segura con nosotros.</p>
+                </form>
+            </div>
+
+            <div class="contact-help">
+                <h3>Otras formas de obtener ayuda</h3>
+                <div>
+                    <article>
+                        <div class="blue"><HelpCircle size={30} /></div>
+                        <p><strong>Centro de ayuda</strong>Encuentra respuestas a las preguntas más frecuentes.<a href="#faq">Ir al centro de ayuda</a></p>
+                    </article>
+                    <article>
+                        <div class="green"><MessageCircle size={30} /></div>
+                        <p><strong>Chat en línea</strong>Habla con nuestro equipo en tiempo real.<a href="#contacto">Iniciar chat</a></p>
+                    </article>
+                    <article>
+                        <div class="purple"><CalendarDays size={30} /></div>
+                        <p><strong>Agendar cita</strong>Reserva una reunión virtual con un asesor.<a href="#contact-form">Agendar ahora</a></p>
+                    </article>
+                    <article>
+                        <div class="orange"><BookOpen size={30} /></div>
+                        <p><strong>Recursos para egresados</strong>Accede a guías, documentos y recursos útiles para ti.<a href="#beneficios">Ver recursos</a></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="public-footer">
+            <div class="public-footer-inner">
+                <div class="public-footer-brand">
+                    <img src="/logos/logoletrasNoBG.png" alt="Universidad CENFOTEC" />
+                    <div>
+                        <p>
+                            El programa de Egresados de la Universidad CENFOTEC busca fortalecer el vínculo entre
+                            egresados, estudiantes y la institución, promoviendo el crecimiento profesional y el
+                            desarrollo de la comunidad.
+                        </p>
+                    </div>
+                </div>
+
+                <nav class="public-footer-links" aria-label="Enlaces rápidos">
+                    <strong>Enlaces rápidos</strong>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#programa">Sobre el programa</a>
+                    <a href="#beneficios">Beneficios</a>
+                    <a href="#comunidad">Comunidad</a>
+                    <a href="#actividades">Actividades</a>
+                    <a href="#contacto">Contáctenos</a>
+                </nav>
+
+                <nav class="public-footer-links" aria-label="Recursos">
+                    <strong>Recursos</strong>
+                    <a href="/oportunidades">Bolsa de empleo</a>
+                    <a href="/mentorias">Mentorías</a>
+                    <a href="/comunidades">Comunidad</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+
+                <div class="public-footer-social">
+                    <strong>Síguenos</strong>
+                    <div class="public-social-links">
+                        <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+                        <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+                    </div>
+                    <p class="public-footer-copy">© 2026 Universidad CENFOTEC. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const publicNav = document.querySelector(".public-nav");
+        const publicToggle = publicNav?.querySelector<HTMLButtonElement>(".public-menu-toggle");
+        const publicNavLinks = document.querySelectorAll<HTMLAnchorElement>(".public-nav-actions a");
+
+        const setCurrentPublicNavLink = () => {
+            const currentTarget = window.location.hash || "#inicio";
+
+            publicNavLinks.forEach((link) => {
+                const linkUrl = new URL(link.href);
+                const isCurrentPath = linkUrl.pathname === window.location.pathname && !linkUrl.hash;
+                const isCurrentHash = linkUrl.pathname === window.location.pathname && linkUrl.hash === currentTarget;
+
+                if (isCurrentPath || isCurrentHash) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        };
+
+        setCurrentPublicNavLink();
+        window.addEventListener("hashchange", setCurrentPublicNavLink);
+
+        publicToggle?.addEventListener("click", () => {
+            const isOpen = publicNav?.classList.toggle("is-open");
+            publicToggle.setAttribute("aria-expanded", String(isOpen));
+            publicToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+        });
+
+        publicNavLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                publicNav?.classList.remove("is-open");
+                publicToggle?.setAttribute("aria-expanded", "false");
+                publicToggle?.setAttribute("aria-label", "Abrir menú");
+            });
+        });
+    </script>
+</body>
+</html>

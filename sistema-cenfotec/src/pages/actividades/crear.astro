@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear actividad">
+    <Header title="Crear actividad" subtitle="Programación de eventos" />
+    <ModuleForm backHref="/actividades" title="Nueva actividad" description="Registra eventos, cupos, responsables y canales de convocatoria." submitLabel="Guardar actividad" sections={[
+        { title: "Datos de actividad", fields: [
+            { label: "Nombre", placeholder: "Feria de empleo" },
+            { label: "Fecha", type: "date" },
+            { label: "Lugar", placeholder: "Auditorio principal" },
+            { label: "Responsable", placeholder: "Vida Estudiantil" },
+            { label: "Tipo", type: "select", options: ["Charla", "Feria", "Taller", "Encuentro"] },
+            { label: "Descripción", type: "textarea", placeholder: "Objetivo y agenda de la actividad" },
+        ] },
+    ]} />
+</Main>

@@ -93,7 +93,8 @@ Login form
     box-shadow: 0 0 0 4px rgba(0, 106, 234, 0.12);
 }
 
-.input-control input {
+.input-control input,
+.input-control select {
     width: 100%;
     min-width: 0;
     border: 0;
@@ -134,4 +135,46 @@ Login form
     color: var(--primary-gray2);
     font-size: 14px;
     text-align: center;
+}
+
+@media (max-width: 860px) {
+    .login-card {
+        min-height: auto;
+        flex-direction: column;
+    }
+
+    .login-brand {
+        min-height: 190px;
+        padding: 32px;
+    }
+
+    .login-brand img {
+        width: min(260px, 100%);
+    }
+
+    .white-card {
+        width: 100%;
+        padding: 36px 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    .login-card {
+        border-radius: 16px;
+    }
+
+    .login-brand {
+        min-height: 150px;
+        padding: 24px;
+    }
+
+    .white-card {
+        padding: 28px 20px;
+        gap: 22px;
+    }
+
+    .login-options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }

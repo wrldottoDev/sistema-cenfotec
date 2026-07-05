@@ -1,8 +1,571 @@
 ---
 import Main from "../layouts/Main.astro";
-import Header  from "../components/layout/Header.astro";
+import Header from "../components/layout/Header.astro";
+import {
+    ArrowLeft,
+    Circle,
+    Download,
+    FilePlus2,
+    Filter,
+    MoreHorizontal,
+    Search,
+} from "@lucide/astro";
+
+const titles = [
+    {
+        name: "Bachillerato en Ingeniería del Software",
+        career: "Ingeniería del Software",
+        school: "Tecnologías de Información",
+        level: "Bachillerato",
+        status: "Activo",
+    },
+    {
+        name: "Licenciatura en Ciberseguridad",
+        career: "Ciberseguridad",
+        school: "Tecnologías de Información",
+        level: "Licenciatura",
+        status: "Activo",
+    },
+    {
+        name: "Maestría en Analítica de Datos",
+        career: "Analítica de Datos",
+        school: "Posgrados",
+        level: "Maestría",
+        status: "Inactivo",
+    },
+    {
+        name: "Técnico en Diseño UX/UI",
+        career: "Diseño Digital",
+        school: "Diseño y Animación Digital",
+        level: "Técnico",
+        status: "Activo",
+    },
+];
 ---
 
 <Main title="Títulos">
     <Header title="Títulos" subtitle="Gestión de Títulos" />
+
+    <section class="titulos-page" aria-label="Gestión de títulos">
+        <div class="titulos-toolbar">
+            <button class="back-button" type="button">
+                <ArrowLeft size={20} />
+                Volver
+            </button>
+
+            <a class="new-title-button" href="/titulos/crear">
+                <FilePlus2 size={18} />
+                Nuevo título
+            </a>
+        </div>
+
+        <div class="metrics-grid" aria-label="Resumen de títulos">
+            <article class="metric-card">
+                <span>Total títulos</span>
+                <strong>128</strong>
+            </article>
+
+            <article class="metric-card">
+                <span>Títulos activos</span>
+                <strong>112</strong>
+            </article>
+
+            <article class="metric-card">
+                <span>Títulos inactivos</span>
+                <strong>16</strong>
+            </article>
+
+            <article class="metric-card search-card">
+                <label class="title-search">
+                    <Search size={18} />
+                    <input type="search" placeholder="Buscar título, carrera, escuela" />
+                </label>
+            </article>
+        </div>
+
+        <form class="filters-row" aria-label="Filtros de títulos">
+            <label>
+                Carrera
+                <input type="text" />
+            </label>
+
+            <label>
+                Escuela
+                <input type="text" />
+            </label>
+
+            <label>
+                Nivel académico
+                <input type="text" />
+            </label>
+
+            <label>
+                Estado
+                <input type="text" />
+            </label>
+
+            <button type="button">
+                <Filter size={16} />
+                Filtrar
+            </button>
+        </form>
+
+        <div class="titulos-content">
+            <section class="titles-table-card" aria-labelledby="titles-table-heading">
+                <div class="table-title-row">
+                    <h2 id="titles-table-heading">Lista de títulos</h2>
+                    <button type="button" aria-label="Más opciones">
+                        <MoreHorizontal size={18} />
+                    </button>
+                </div>
+
+                <div class="titles-table-wrapper">
+                    <table class="titles-table">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Carrera</th>
+                                <th>Escuela</th>
+                                <th>Nivel</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {titles.map((title) => (
+                                <tr>
+                                    <th scope="row">{title.name}</th>
+                                    <td>{title.career}</td>
+                                    <td>{title.school}</td>
+                                    <td>{title.level}</td>
+                                    <td>
+                                        <span class:list={["status-badge", title.status === "Activo" ? "is-active" : "is-inactive"]}>
+                                            {title.status}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="title-row-actions">
+                                            <a class="row-action" href="/titulos/detalle">Ver</a>
+                                            <button class="row-action" type="button">Editar</button>
+                                            <button class="row-action is-danger" type="button">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <aside class="titulos-side-panel" aria-label="Panel de títulos">
+                <section class="side-card">
+                    <h2>Niveles académicos</h2>
+                    <div class="chart-block">
+                        <div class="donut-chart" aria-hidden="true"></div>
+                        <div>
+                            <strong>Gráfica</strong>
+                            <span>Distribución actual</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="side-card">
+                    <h2>Acciones rápidas</h2>
+                    <div class="quick-actions">
+                        <button type="button">
+                            <FilePlus2 size={16} />
+                            Registrar título
+                        </button>
+                        <button type="button">
+                            <Download size={16} />
+                            Exportar lista
+                        </button>
+                        <button type="button">
+                            <Circle size={16} />
+                            Revisar inactivos
+                        </button>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </section>
 </Main>
+
+<style>
+    .titulos-page {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .titulos-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+    }
+
+    .back-button,
+    .new-title-button,
+    .filters-row button,
+    .table-title-row button,
+    .row-action,
+    .quick-actions button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 8px;
+        font: inherit;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .back-button {
+        min-height: 46px;
+        padding: 0 20px;
+        color: #182033;
+        background: #e2e7ef;
+    }
+
+    .new-title-button {
+        min-height: 46px;
+        padding: 0 18px;
+        color: white;
+        background: var(--primary-light);
+    }
+
+    .back-button:hover,
+    .new-title-button:hover,
+    .filters-row button:hover,
+    .quick-actions button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px rgba(22, 74, 152, 0.14);
+    }
+
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .metric-card,
+    .titles-table-card,
+    .side-card {
+        background: white;
+        border: 1px solid #dce7f6;
+        border-radius: 8px;
+        box-shadow: 0 14px 30px rgba(22, 74, 152, 0.07);
+    }
+
+    .metric-card {
+        min-height: 132px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .metric-card span {
+        color: #182033;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .metric-card strong {
+        color: var(--primary);
+        font-size: 30px;
+        line-height: 1;
+        font-weight: 800;
+    }
+
+    .search-card {
+        align-items: stretch;
+        text-align: left;
+    }
+
+    .title-search {
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        color: #aab3c2;
+        border: 1px solid #dce7f6;
+        border-radius: 8px;
+        background: #fbfdff;
+    }
+
+    .title-search input,
+    .filters-row input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #182033;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .title-search input::placeholder {
+        color: #9aa5b8;
+    }
+
+    .filters-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(120px, 1fr)) auto;
+        align-items: end;
+        gap: 16px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #d4deea;
+    }
+
+    .filters-row label {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        color: #182033;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .filters-row input {
+        min-height: 38px;
+        padding: 0 11px;
+        background: white;
+        border: 1px solid #cfd9e7;
+        border-radius: 5px;
+    }
+
+    .filters-row button {
+        min-height: 38px;
+        min-width: 124px;
+        padding: 0 16px;
+        color: #182033;
+        background: #d8dde5;
+    }
+
+    .titulos-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 34px;
+    }
+
+    .titles-table-card {
+        min-width: 0;
+        padding: 18px 20px;
+    }
+
+    .table-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+
+    .table-title-row h2,
+    .side-card h2 {
+        color: #182033;
+        font-size: 15px;
+        line-height: 1.2;
+        font-weight: 800;
+    }
+
+    .table-title-row button {
+        width: 34px;
+        height: 34px;
+        color: var(--primary);
+        background: #f2f6fc;
+    }
+
+    .titles-table-wrapper {
+        overflow-x: auto;
+        border: 1px solid #cfd9e7;
+        border-radius: 8px;
+    }
+
+    .titles-table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    .titles-table thead th {
+        padding: 12px 14px;
+        color: #111827;
+        background: #d7dbe2;
+        font-size: 13px;
+        font-weight: 800;
+        text-align: left;
+    }
+
+    .titles-table tbody th,
+    .titles-table td {
+        height: 58px;
+        padding: 12px 14px;
+        color: #28344d;
+        border-top: 1px solid #d8e0eb;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .status-badge.is-active {
+        color: #00734a;
+        background: rgba(0, 115, 74, 0.12);
+    }
+
+    .status-badge.is-inactive {
+        color: #b4232a;
+        background: rgba(210, 35, 42, 0.12);
+    }
+
+    .row-action {
+        min-height: 32px;
+        padding: 0 12px;
+        color: var(--primary);
+        background: #eef5ff;
+    }
+
+    .title-row-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .row-action.is-danger {
+        color: #b4232a;
+        background: rgba(210, 35, 42, 0.1);
+    }
+
+    .titulos-side-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .side-card {
+        padding: 20px;
+    }
+
+    .chart-block {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 18px;
+    }
+
+    .donut-chart {
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        background: conic-gradient(var(--primary-light) 0 44%, var(--secondary2) 44% 68%, #d4d8df 68% 100%);
+        position: relative;
+        flex: 0 0 auto;
+    }
+
+    .donut-chart::after {
+        content: "";
+        position: absolute;
+        inset: 15px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .chart-block strong,
+    .chart-block span {
+        display: block;
+    }
+
+    .chart-block strong {
+        color: #182033;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .chart-block span {
+        margin-top: 5px;
+        color: #657189;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .quick-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .quick-actions button {
+        min-height: 42px;
+        justify-content: flex-start;
+        padding: 0 14px;
+        color: #28344d;
+        background: #e1e6ee;
+    }
+
+    @media (max-width: 1180px) {
+        .metrics-grid,
+        .titulos-content {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .titulos-side-panel {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 860px) {
+        .metrics-grid,
+        .filters-row,
+        .titulos-content,
+        .titulos-side-panel {
+            grid-template-columns: 1fr;
+        }
+
+        .titulos-side-panel {
+            grid-column: auto;
+        }
+
+        .filters-row button {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .titulos-toolbar {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .back-button,
+        .new-title-button {
+            width: 100%;
+        }
+    }
+</style>

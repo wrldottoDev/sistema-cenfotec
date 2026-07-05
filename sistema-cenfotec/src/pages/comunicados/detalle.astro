@@ -1,0 +1,19 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ProfileView from "../../components/admin/ProfileView.astro";
+---
+
+<Main title="Detalle de comunicado">
+    <Header title="Detalle de comunicado" subtitle="Mensaje institucional" />
+    <ProfileView backHref="/comunicados" title="Actualización de plataforma" subtitle="Comunicado por correo" status="Publicado" facts={[
+        { label: "Audiencia", value: "Todos los egresados" },
+        { label: "Fecha", value: "2026-07-04" },
+        { label: "Alcance", value: "4,820" },
+    ]} sections={[
+        { title: "Contenido", items: [
+            { label: "Resumen", value: "Aviso sobre mejoras de navegación y nuevos módulos administrativos." },
+            { label: "Canal", value: "Correo institucional y portal" },
+        ] },
+    ]} />
+</Main>

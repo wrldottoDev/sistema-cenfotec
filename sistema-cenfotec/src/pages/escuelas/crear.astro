@@ -1,0 +1,18 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear escuela">
+    <Header title="Crear escuela" subtitle="Registro de unidad académica" />
+    <ModuleForm backHref="/escuelas" title="Nueva escuela" description="Define la escuela, coordinación y oferta asociada." submitLabel="Guardar escuela" sections={[
+        { title: "Datos generales", fields: [
+            { label: "Nombre de la escuela", placeholder: "Tecnologías de Información" },
+            { label: "Código", placeholder: "ETI" },
+            { label: "Coordinador", placeholder: "María González" },
+            { label: "Correo de contacto", type: "email", placeholder: "escuela@ucenfotec.ac.cr" },
+            { label: "Descripción", type: "textarea", placeholder: "Alcance académico de la escuela" },
+        ] },
+    ]} />
+</Main>

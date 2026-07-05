@@ -1,0 +1,31 @@
+---
+import Main from "../layouts/Main.astro";
+import Header from "../components/layout/Header.astro";
+import ModuleList from "../components/admin/ModuleList.astro";
+---
+
+<Main title="Actividades">
+    <Header title="Actividades" subtitle="Gestión de actividades" />
+
+    <ModuleList
+        title="Calendario de actividades"
+        description="Organiza eventos, charlas, ferias y convocatorias para egresados."
+        createHref="/actividades/crear"
+        createLabel="Crear actividad"
+        searchPlaceholder="Buscar actividad, sede o escuela"
+        stats={[
+            { label: "Programadas", value: "18", detail: "Próximos 60 días" },
+            { label: "Confirmadas", value: "12", detail: "Con cupos abiertos" },
+            { label: "Asistentes", value: "426", detail: "Inscripciones" },
+            { label: "Finalizadas", value: "34", detail: "Este año" },
+        ]}
+        filters={["Fecha", "Tipo", "Estado"]}
+        columns={["Actividad", "Fecha", "Lugar", "Responsable"]}
+        rows={[
+            { cells: ["Feria de empleo", "2026-07-08", "Auditorio principal", "Vida Estudiantil"], status: "Activo", action: { label: "Ver", href: "/actividades/detalle" } },
+            { cells: ["Encuentro de egresados", "2026-07-22", "Campus central", "Relaciones Externas"], status: "Activo", action: { label: "Ver", href: "/actividades/detalle" } },
+            { cells: ["Charla de IA aplicada", "2026-08-03", "Virtual", "Escuela TI"], status: "Pendiente", action: { label: "Ver", href: "/actividades/detalle" } },
+            { cells: ["Taller de portafolio", "2026-08-15", "Laboratorio DAD", "Diseño Digital"], status: "Borrador", action: { label: "Ver", href: "/actividades/detalle" } },
+        ]}
+    />
+</Main>

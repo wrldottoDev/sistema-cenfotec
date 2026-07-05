@@ -1,0 +1,18 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Crear comunicado">
+    <Header title="Crear comunicado" subtitle="Publicación institucional" />
+    <ModuleForm backHref="/comunicados" title="Nuevo comunicado" description="Prepara mensajes para audiencias, canales y programación de envío." submitLabel="Guardar comunicado" sections={[
+        { title: "Contenido", fields: [
+            { label: "Título", placeholder: "Actualización de plataforma" },
+            { label: "Canal", type: "select", options: ["Correo", "Portal", "Ambos"] },
+            { label: "Audiencia", type: "select", options: ["Todos los egresados", "Mentores", "Comunidad general"] },
+            { label: "Fecha de publicación", type: "date" },
+            { label: "Mensaje", type: "textarea", placeholder: "Contenido del comunicado" },
+        ] },
+    ]} />
+</Main>

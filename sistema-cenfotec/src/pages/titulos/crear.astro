@@ -1,0 +1,30 @@
+---
+import Main from "../../layouts/Main.astro";
+import Header from "../../components/layout/Header.astro";
+import ModuleForm from "../../components/admin/ModuleForm.astro";
+---
+
+<Main title="Nuevo título">
+    <Header title="Nuevo título" subtitle="Registro de título académico" />
+    <ModuleForm
+        backHref="/titulos"
+        title="Nuevo título"
+        description="Asocia el título con su carrera, escuela, nivel académico y estado vigente."
+        submitLabel="Guardar título"
+        sections={[
+            {
+                title: "Datos del título",
+                fields: [
+                    { label: "Nombre del título", placeholder: "Bachillerato en Ingeniería del Software", required: true },
+                    { label: "Egresado asociado", placeholder: "Nombre o identificación del egresado", required: true },
+                    { label: "Carrera", type: "select", options: ["Ingeniería del Software", "Ciberseguridad", "Diseño UX/UI", "Analítica de Datos"], required: true },
+                    { label: "Escuela", type: "select", options: ["Tecnologías de Información", "Diseño y Animación Digital", "Posgrados"], required: true },
+                    { label: "Nivel académico", type: "select", options: ["Técnico", "Bachillerato", "Licenciatura", "Maestría"], required: true },
+                    { label: "Año de graduación", type: "number", placeholder: "2026", min: "1990", required: true },
+                    { label: "Estado del título", type: "select", options: ["Activo", "Pendiente", "Inactivo"], required: true },
+                    { label: "Descripción", type: "textarea", placeholder: "Detalle administrativo del título" },
+                ],
+            },
+        ]}
+    />
+</Main>
