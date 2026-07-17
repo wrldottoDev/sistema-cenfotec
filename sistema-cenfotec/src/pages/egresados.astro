@@ -1,10 +1,12 @@
 ---
+// Importa el layout, encabezado y componentes que forman la gestión de egresados.
 import Main from "../layouts/Main.astro";
 import Header from "../components/layout/Header.astro";
 import EgresadosTable from "../components/egresados/EgresadosTable.astro";
 import EgresadosToolbar from "../components/egresados/EgresadosToolbar.astro";
 import type { Graduate } from "../components/egresados/EgresadosTable.astro";
 
+// Datos simulados de egresados que alimentan la tabla de esta pantalla.
 const graduates: Graduate[] = [
     {
         id: "2401",

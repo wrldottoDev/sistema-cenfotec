@@ -1,23 +1,28 @@
 ---
+// Importa los íconos usados por las acciones de búsqueda, filtros y tabla.
 import { Download, Filter, Pencil, Plus, Search, Trash2 } from "@lucide/astro";
 
+// Describe una tarjeta de resumen para el módulo administrativo.
 export interface Stat {
     label: string;
     value: string;
     detail?: string;
 }
 
+// Describe la acción principal disponible para cada fila de la tabla.
 export interface RowAction {
     label: string;
     href: string;
 }
 
+// Define la estructura de cada registro que se muestra en la lista.
 export interface Row {
     cells: string[];
     status?: "Activo" | "Inactivo" | "Pendiente" | "Publicado" | "Borrador" | "Cerrado";
     action?: RowAction;
 }
 
+// Agrupa todas las propiedades configurables del componente de listado.
 interface Props {
     title: string;
     description: string;
@@ -30,6 +35,7 @@ interface Props {
     rows: Row[];
 }
 
+// Recibe la configuración enviada por cada página para reutilizar el mismo listado.
 const {
     title,
     description,

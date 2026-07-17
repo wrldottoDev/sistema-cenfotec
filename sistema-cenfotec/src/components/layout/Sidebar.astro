@@ -1,4 +1,5 @@
 ---
+// Importa los íconos que representan cada sección del menú lateral.
 import {
     Award,
     BookOpen,
@@ -11,6 +12,7 @@ import {
     Settings,
 } from "@lucide/astro";
 
+// Detecta la ruta actual para resaltar el enlace activo del menú.
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => currentPath === path || currentPath.startsWith(`${path}/`);
 ---
@@ -90,16 +92,19 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
 </nav>
 
 <script>
+    // Obtiene los controles del menú lateral para manejar su apertura y colapso.
     const sidebar = document.querySelector("#sidebar");
     const toggle = sidebar?.querySelector(".toggle");
     const mobileToggle = sidebar?.querySelector<HTMLButtonElement>(".mobile-menu-toggle");
 
+    // Colapsa o expande el menú en escritorio y actualiza el atributo accesible.
     toggle?.addEventListener("click", () => {
         const isCollapsed = sidebar?.classList.toggle("is-collapsed");
         document.body.classList.toggle("sidebar-open", !isCollapsed);
         toggle.setAttribute("aria-expanded", String(!isCollapsed));
     });
 
+    // Abre o cierra el menú móvil y cambia el texto accesible del botón.
     mobileToggle?.addEventListener("click", () => {
         const isOpen = sidebar?.classList.toggle("is-mobile-open");
         mobileToggle.setAttribute("aria-expanded", String(isOpen));

@@ -1,4 +1,5 @@
 ---
+// Importa el layout, encabezado e íconos usados para construir el dashboard.
 import Main from "../layouts/Main.astro";
 import Header from "../components/layout/Header.astro";
 import {
@@ -15,6 +16,7 @@ import {
     UsersRound,
 } from "@lucide/astro";
 
+// Calcula la fecha y saludo dinámico que se muestra en la bienvenida.
 const today = new Date();
 const currentHour = today.getHours();
 const greeting =
@@ -32,6 +34,7 @@ const todayLabel = today.toLocaleDateString("es-CR", {
 });
 const todayIso = today.toISOString().split("T")[0];
 
+// Define accesos rápidos a los módulos principales del sistema.
 const quickActions = [
     {
         href: "/actividades",
@@ -60,6 +63,7 @@ const quickActions = [
     },
 ];
 
+// Define las métricas destacadas que se muestran en las tarjetas del dashboard.
 const stats = [
     {
         label: "Total egresados",
@@ -93,6 +97,7 @@ const stats = [
     },
 ];
 
+// Lista las actividades próximas que aparecen en el panel de agenda.
 const upcomingActivities = [
     {
         date: "08 Jul",
@@ -111,6 +116,7 @@ const upcomingActivities = [
     },
 ];
 
+// Datos simulados para representar el avance por carrera en el gráfico.
 const careerChart = [
     { label: "TI", value: "72%" },
     { label: "IS", value: "64%" },
@@ -119,6 +125,7 @@ const careerChart = [
     { label: "AD", value: "41%" },
 ];
 
+// Describe los roles principales y sus responsabilidades dentro del sistema.
 const roles = [
     {
         name: "Registro",

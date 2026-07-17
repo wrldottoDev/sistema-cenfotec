@@ -1,6 +1,8 @@
 ---
+// Importa los íconos usados en la vista de detalle de un registro.
 import { ArrowLeft, Mail, Pencil, Phone } from "@lucide/astro";
 
+// Define los datos que la vista de perfil necesita para mostrar un detalle.
 interface Props {
     backHref: string;
     title: string;
@@ -12,6 +14,7 @@ interface Props {
     sections: { title: string; items: { label: string; value: string }[] }[];
 }
 
+// Recibe la información del registro y calcula la clase visual según su estado.
 const { backHref, title, subtitle, status, email, phone, facts, sections } = Astro.props;
 const statusClass = `is-${status.toLowerCase()}`;
 ---

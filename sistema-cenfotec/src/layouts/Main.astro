@@ -1,11 +1,14 @@
 ---
+// Importa el menú lateral y los estilos globales usados por las páginas internas.
 import Sidebar from "../components/layout/Sidebar.astro";
 import "../styles/global.css";
 
+// Define las propiedades que pueden recibir las páginas al usar este layout.
 interface Props {
     title?: string;
 }
 
+// Obtiene el título de la página y usa un valor por defecto si no se envía.
 const { title = "Sistema CENFOTEC" } = Astro.props;
 ---
 
@@ -16,6 +19,7 @@ const { title = "Sistema CENFOTEC" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <script is:inline>
+        // Aplica el tema antes de pintar la página para evitar parpadeos visuales.
         const savedTheme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? "dark" : "light");

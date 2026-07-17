@@ -1,11 +1,14 @@
 ---
+// Importa los íconos usados en la barra superior del panel administrativo.
 import { Bell, Moon, Search, Sun, UserRound } from "@lucide/astro";
 
+// Define los textos configurables que muestra el encabezado de cada página.
 interface Props {
     title?: string;
     subtitle?: string;
 }
 
+// Lee el título y subtítulo enviados por la página, con valores por defecto.
 const { title = "Egresados", subtitle = "Gestión de egresados" } = Astro.props;
 ---
 
@@ -48,9 +51,11 @@ const { title = "Egresados", subtitle = "Gestión de egresados" } = Astro.props;
 </header>
 
 <script>
+    // Controla el botón de tema y mantiene sincronizados sus textos accesibles.
     const themeToggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
     const root = document.documentElement;
 
+    // Actualiza el estado visual y accesible del botón según el tema activo.
     const updateThemeToggle = () => {
         const isDark = root.dataset.theme === "dark";
         themeToggle?.setAttribute("aria-pressed", String(isDark));
@@ -59,6 +64,7 @@ const { title = "Egresados", subtitle = "Gestión de egresados" } = Astro.props;
 
     updateThemeToggle();
 
+    // Alterna entre modo claro y oscuro, y guarda la elección en el navegador.
     themeToggle?.addEventListener("click", () => {
         const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
         root.dataset.theme = nextTheme;

@@ -1,4 +1,5 @@
 ---
+// Importa los íconos y estilos necesarios para construir la página pública.
 import { Bell, BookOpen, BriefcaseBusiness, CalendarDays, ChevronDown, Clock, Code2, Eye, Gem, GraduationCap, Handshake, HelpCircle, LockKeyhole, Mail, MapPin, Megaphone, Menu, MessageCircle, Phone, Search, Send, Target, Ticket, UsersRound, User } from "@lucide/astro";
 import "../styles/global.css";
 ---
@@ -10,6 +11,7 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Programa de Egresados CENFOTEC</title>
     <script is:inline>
+        // Define el tema inicial antes de renderizar la landing pública.
         const savedTheme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? "dark" : "light");
@@ -748,10 +750,12 @@ import "../styles/global.css";
     </main>
 
     <script>
+        // Prepara la navegación pública para marcar secciones activas y manejar el menú móvil.
         const publicNav = document.querySelector(".public-nav");
         const publicToggle = publicNav?.querySelector<HTMLButtonElement>(".public-menu-toggle");
         const publicNavLinks = document.querySelectorAll<HTMLAnchorElement>(".public-nav-actions a");
 
+        // Marca como activo el enlace que coincide con la ruta o el ancla actual.
         const setCurrentPublicNavLink = () => {
             const currentTarget = window.location.hash || "#inicio";
 
@@ -771,12 +775,14 @@ import "../styles/global.css";
         setCurrentPublicNavLink();
         window.addEventListener("hashchange", setCurrentPublicNavLink);
 
+        // Abre o cierra el menú de navegación en pantallas pequeñas.
         publicToggle?.addEventListener("click", () => {
             const isOpen = publicNav?.classList.toggle("is-open");
             publicToggle.setAttribute("aria-expanded", String(isOpen));
             publicToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
         });
 
+        // Cierra el menú móvil después de seleccionar un enlace.
         publicNavLinks.forEach((link) => {
             link.addEventListener("click", () => {
                 publicNav?.classList.remove("is-open");

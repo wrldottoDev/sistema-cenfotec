@@ -1,12 +1,15 @@
 ---
+// Importa los íconos usados por los botones de filtros y creación.
 import { Filter, Plus } from "@lucide/astro";
 
+// Define los valores de fecha configurables del toolbar.
 interface Props {
     dateValue?: string;
     minDate?: string;
     maxDate?: string;
 }
 
+// Establece fechas por defecto para el filtro de calendario.
 const { dateValue = "2026-07-03", minDate = "2026-01-01", maxDate = "2026-12-31" } = Astro.props;
 ---
 

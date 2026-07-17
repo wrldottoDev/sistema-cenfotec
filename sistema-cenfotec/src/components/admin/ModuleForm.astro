@@ -1,6 +1,8 @@
 ---
+// Importa los íconos de navegación y guardado del formulario genérico.
 import { ArrowLeft, Save } from "@lucide/astro";
 
+// Define cada campo que puede renderizar el formulario administrativo.
 export interface Field {
     label: string;
     type?: "text" | "email" | "tel" | "date" | "url" | "number" | "file" | "textarea" | "select";
@@ -12,6 +14,7 @@ export interface Field {
     pattern?: string;
 }
 
+// Define las propiedades que cada página envía para configurar el formulario.
 interface Props {
     backHref: string;
     title: string;
@@ -23,6 +26,7 @@ interface Props {
     }[];
 }
 
+// Lee los textos, enlace de regreso y secciones que componen el formulario.
 const { backHref, title, description, submitLabel = "Guardar", sections } = Astro.props;
 ---
 

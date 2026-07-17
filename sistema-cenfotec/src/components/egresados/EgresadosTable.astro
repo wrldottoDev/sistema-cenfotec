@@ -1,6 +1,8 @@
 ---
+// Importa los íconos de acciones y controles usados en la tabla de egresados.
 import { Eye, Pencil, RefreshCw, Search, Settings2, Trash2 } from "@lucide/astro";
 
+// Describe la información mínima que se muestra de cada egresado.
 export interface Graduate {
     id: string;
     name: string;
@@ -11,10 +13,12 @@ export interface Graduate {
     program: string;
 }
 
+// Define las propiedades que recibe la tabla desde la página de egresados.
 interface Props {
     graduates: Graduate[];
 }
 
+// Obtiene la lista de egresados que se renderiza en las filas de la tabla.
 const { graduates } = Astro.props;
 ---
 
